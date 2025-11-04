@@ -7,35 +7,36 @@ class Program
     static void Main(string[] args)
     {
         Console.WriteLine("Step right up and check your luck!\n");
-        const int SIZE = 3;
+        const int REEL_SIZE = 3;
         const int MAX_RANDOM = 100;
         const int MIN_RANDOM = 0;
         
         Random number = new Random();       
         int randomNumber = number.Next(MIN_RANDOM, MAX_RANDOM);
-        int[,] grid =  new int[randomNumber, randomNumber];
-        for (int row = 0; row < SIZE; row++)
+        
+        int[,] reel =  new int[REEL_SIZE, REEL_SIZE];
+        for (int row = 0; row < REEL_SIZE; row++)
         {
-            for (int col = 0; col < SIZE; col++)
+            for (int col = 0; col < REEL_SIZE; col++)
             {
-                grid[row, col] = ' ';
+                reel[row, col] = ' ';
             }
         }
 
-        for (int row = 0; row < SIZE; row++)
+        for (int row = 0; row < REEL_SIZE; row++)
         {
-            for (int col = 0; col < SIZE; col++)
+            for (int col = 0; col < REEL_SIZE; col++)
             {
                 Console.Write($" { randomNumber }");
-                if (col < SIZE - 1) Console.Write(" |");
+                if (col < REEL_SIZE - 1) Console.Write(" |");
             }
             Console.WriteLine();
-            if (row < SIZE - 1)
+            if (row < REEL_SIZE - 1)
             {
-                for (int i = 0; i < SIZE; i++)
+                for (int i = 0; i < REEL_SIZE; i++)
                 {
                     Console.Write("----");
-                    if (i < SIZE - 1) Console.Write("+");
+                    if (i < REEL_SIZE - 1) Console.Write("+");
                 }
                 Console.WriteLine();
             }
