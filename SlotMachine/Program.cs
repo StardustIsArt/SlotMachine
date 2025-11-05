@@ -10,9 +10,13 @@ class Program
         const int REEL_SIZE = 3;
         const int MAX_RANDOM = 100;
         const int MIN_RANDOM = 0;
-        
+        int money = 25;
         Random number = new Random();       
         int randomNumber = number.Next(MIN_RANDOM, MAX_RANDOM);
+        
+        Console.WriteLine($"Your starting balance is:{money}\n");
+        int wager = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine($"How much would you like to bet: $1 - $5: {wager}");
         
         int[,] reel =  new int[REEL_SIZE, REEL_SIZE];
         for (int row = 0; row < REEL_SIZE; row++)
