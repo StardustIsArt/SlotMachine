@@ -15,9 +15,9 @@ class Program
         int randomNumber = number.Next(MIN_RANDOM, MAX_RANDOM);
         
         Console.WriteLine($"Your starting balance is:{money}\n");
-        int wager = Convert.ToInt32(Console.ReadLine());
-        Console.WriteLine($"How much would you like to bet: $1 - $5: {wager}");
         
+        Console.WriteLine($"How much would you like to bet: $1 - $5: ");
+        int wager = Convert.ToInt32(Console.ReadLine());
         int[,] reel =  new int[REEL_SIZE, REEL_SIZE];
         for (int row = 0; row < REEL_SIZE; row++)
         {
