@@ -14,24 +14,24 @@ class Program
         Random number = new Random();       
         int randomNumber = number.Next(MIN_RANDOM, MAX_RANDOM);
         
-        Console.WriteLine($"Your starting balance is:{MONEY}\n");
-        
+        Console.WriteLine($"Your starting balance is: ${MONEY}\n");
         Console.WriteLine($"How much would you like to bet: $1 - $5: ");
         int wager = Convert.ToInt32(Console.ReadLine());
-        int[,] reel =  new int[REEL_SIZE, REEL_SIZE];
+        int[,] reel;
+        reel =  new int[REEL_SIZE, REEL_SIZE];
         for (int row = 0; row < REEL_SIZE; row++)
         {
             for (int col = 0; col < REEL_SIZE; col++)
             {
-                reel[row, col] = ' ';
+                reel[row, col] = randomNumber;
             }
         }
-
+        Console.WriteLine();
         for (int row = 0; row < REEL_SIZE; row++)
         {
             for (int col = 0; col < REEL_SIZE; col++)
             {
-                Console.Write($" { randomNumber }");
+                Console.Write($"   ");
                 if (col < REEL_SIZE - 1) Console.Write(" |");
             }
             Console.WriteLine();
@@ -44,8 +44,8 @@ class Program
                 }
                 Console.WriteLine();
             }
-            
         }
-
+        
+        
     }
 }
