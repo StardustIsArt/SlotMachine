@@ -81,7 +81,7 @@ class Program
         }
         if (wager == 6)
         {
-            Console.WriteLine("Checking the all available lines...");
+            Console.WriteLine("Checking all available lines...");
         }
     }
 }
