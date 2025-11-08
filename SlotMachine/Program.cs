@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Reflection.Metadata.Ecma335;
 
 namespace SlotMachine;
 
@@ -57,6 +58,10 @@ class Program
         if (wager == 1)
         {
             Console.WriteLine("Checking the horizontal center line...");
+            if (reel[1, 0] == reel[1, 1] && reel[1, 1] == reel[1, 2])
+            {
+                Console.WriteLine("You won $3 dollars!");
+            }
         }
         if (wager == 2)
         {
