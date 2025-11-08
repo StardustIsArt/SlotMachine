@@ -66,6 +66,10 @@ class Program
         if (wager == 2)
         {
             Console.WriteLine("Checking the vertical center line...");
+            if (reel[0, 1] == reel[1, 1] && reel[1, 1] == reel[1, 2])
+            {
+                Console.WriteLine("You won $3 dollars!");
+            }
         }
         if (wager == 3)
         {
@@ -78,6 +82,10 @@ class Program
         if (wager == 5)
         {
             Console.WriteLine("Checking the diagonal lines...");
+            if (reel[0, 0] == reel[1, 1] && reel[1, 1] == reel[2, 2] && reel[2, 2] == reel[2, 0] && reel[2, 0] == reel[0, 2])
+            {
+                Console.WriteLine("You won $6 dollars!");
+            }
         }
         if (wager == 6)
         {
