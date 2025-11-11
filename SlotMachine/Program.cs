@@ -24,7 +24,7 @@ class Program
                           $"$5 - play both diagonal lines\n" +
                           $"$6 - play all available lines (horizontal, vertical & diagonal)\n");
         int wager = Convert.ToInt32(Console.ReadLine());
-        Console.WriteLine($"Your wager and lines to play: ${wager}\n");
+        Console.WriteLine($"Your wager: ${wager}\n");
         
         int[,] reel;
         reel =  new int[REEL_SIZE, REEL_SIZE];
@@ -32,7 +32,7 @@ class Program
         {
             for (int col = 0; col < REEL_SIZE; col++)
             {
-                reel[row, col] = ' ';
+                reel[row, col] = number.Next(MIN_RANDOM, MAX_RANDOM);
             }
         }
         Console.WriteLine();
@@ -40,7 +40,7 @@ class Program
         {
             for (int col = 0; col < REEL_SIZE; col++)
             {
-                Console.Write($" " +number.Next(MIN_RANDOM, MAX_RANDOM));
+                Console.Write($" {reel[row, col]}");
                 if (col < REEL_SIZE - 1) Console.Write(" |");
             }
             Console.WriteLine();
@@ -90,6 +90,8 @@ class Program
         if (wager == 6)
         {
             Console.WriteLine("Checking all available lines...");
+            
         }
     }
 }
+
