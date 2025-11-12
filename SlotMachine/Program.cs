@@ -184,6 +184,27 @@ class Program
                     
                 }   
             }
+
+            for (int j = 1; j < reel.GetLength(1); j++)
+            {
+                if (reel[j, j] != center)
+                {
+                    win = false;
+                }
+            }
+
+            for (int j = 2; j < reel.GetLength(2); j++)
+            {
+                if (reel[j, j] != lastRight)
+                {
+                    win = false;
+                }
+            }
+
+            if (win)
+            {
+                Console.WriteLine("Your won $12 dollars!");
+            }
         }
         if (wager == ALL_MODE)
         {
