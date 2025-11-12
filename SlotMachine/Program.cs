@@ -144,7 +144,6 @@ class Program
                 if (reel[0, j] != firstTopLeft)
                 {
                     win = false;
-                    break;
                 }
             }
             for (int j = 1; j < reel.GetLength(1); j++)
@@ -152,7 +151,6 @@ class Program
                 if (reel[0, j] != firstTopCenter)
                 {
                     win = false;
-                    break;
                 }
             }
             for (int j = 2; j < reel.GetLength(2); j++)
@@ -160,7 +158,6 @@ class Program
                 if (reel[0, j] != firstTopRight)
                 {
                     win = false;
-                    break;
                 }
             }
             if (win)
@@ -175,6 +172,18 @@ class Program
         if (wager == DIAGONAL_MODE)
         {
             Console.WriteLine("Checking the diagonal lines...");
+            bool win = true;
+            int firstLeft = reel[0, 0];
+            int center = reel[1, 1];
+            int lastRight = reel[2, 2];
+            for (int j = 1; j < reel.GetLength(2); j++)
+            {
+                if (reel[j, j] != firstLeft)
+                {
+                    win = false;
+                    
+                }   
+            }
         }
         if (wager == ALL_MODE)
         {
