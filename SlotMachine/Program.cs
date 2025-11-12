@@ -65,14 +65,14 @@ class Program
         if (wager == CENTER_HORIZONTAL_MODE)
         {
             Console.WriteLine("Checking the horizontal center line...");
-            bool win = false;
+            bool win = true;
             int first = reel[1, 0];
             for (int j = 0; j < reel.GetLength(1); j++)
             {
-                if (reel[1, j] == first) 
+                if (reel[1, j] != first) 
                 {
                     Console.WriteLine("You won $3 dollars!");
-                    win = true;
+                    win = false;
                     break;
                 }
             }
@@ -95,6 +95,8 @@ class Program
         if (wager == ALL_HORIZONTAL_MODE)
         {
             Console.WriteLine("Checking all the horizontal lines...");
+            bool win = true;
+            int
         }
         if (wager == ALL_VERTICAL_MODE)
         {
