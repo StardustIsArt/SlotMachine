@@ -109,7 +109,7 @@ class Program
             }
             for (int j = 1; j < reel.GetLength(1); j++)
             {
-                if (reel[0, j] != firstLeft)
+                if (reel[0, j] != firstCenter)
                 {
                     win = false;
                     break;
@@ -117,7 +117,7 @@ class Program
             }
             for (int j = 2; j < reel.GetLength(2); j++)
             {
-                if (reel[0, j] != firstLeft)
+                if (reel[0, j] != firstRight)
                 {
                     win = false;
                     break;
@@ -135,6 +135,42 @@ class Program
         if (wager == ALL_VERTICAL_MODE)
         {
             Console.WriteLine("Checking all the vertical lines...");
+            bool win = true;
+            int firstTopLeft = reel[0, 0];
+            int firstTopCenter = reel[0, 1];
+            int firstTopRight = reel[0, 2];
+            for (int j = 0; j < reel.GetLength(0); j++)
+            {
+                if (reel[0, j] != firstTopLeft)
+                {
+                    win = false;
+                    break;
+                }
+            }
+            for (int j = 1; j < reel.GetLength(1); j++)
+            {
+                if (reel[0, j] != firstTopCenter)
+                {
+                    win = false;
+                    break;
+                }
+            }
+            for (int j = 2; j < reel.GetLength(2); j++)
+            {
+                if (reel[0, j] != firstTopRight)
+                {
+                    win = false;
+                    break;
+                }
+            }
+            if (win)
+            {
+                Console.WriteLine("Your won $9 dollars!");
+            }
+            else
+            {
+                Console.WriteLine("You didn't win any lines this round. Try another bet!");
+            }
         }
         if (wager == DIAGONAL_MODE)
         {
