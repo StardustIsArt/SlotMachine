@@ -61,28 +61,34 @@ class Program
         const int ALL_VERTICAL_MODE = 4;
         const int DIAGONAL_MODE = 5;
         const int ALL_MODE = 6;
+        
         if (wager == CENTER_HORIZONTAL_MODE)
         {
             Console.WriteLine("Checking the horizontal center line...");
-            int first = reel[1, j];
-            
+            bool win = false;
+            int first = reel[1, 0];
             for (int j = 0; j < reel.GetLength(1); j++)
             {
-                if (reel[0, j] != first) 
+                if (reel[1, j] == first) 
                 {
-                    Console.WriteLine("You won $3 dollars!"); 
+                    Console.WriteLine("You won $3 dollars!");
+                    win = true;
+                    break;
                 }
             }
         }
         if (wager == CENTER_VERTICAL_MODE)
         {
             Console.WriteLine("Checking the vertical center line...");
+            bool win = true;
             int first = reel[0, 1];
             for (int j = 0; j < reel.GetLength(0); j++)
             {
                 if (reel[0, j] != first)
                 {
                     Console.WriteLine("You won $3 dollars!");
+                    win = false;
+                    break;
                 }
             }
         }
