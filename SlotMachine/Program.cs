@@ -96,7 +96,30 @@ class Program
         {
             Console.WriteLine("Checking all the horizontal lines...");
             bool win = true;
-            int
+            int firstLeft = reel[0, 0];
+            int firstCenter = reel[0, 1];
+            int firstRight = reel[0, 2];
+            for (int j = 0; j < reel.GetLength(0); j++)
+            {
+                if (reel[0, j] != firstLeft)
+                {
+                    win = false;
+                }
+            }
+            for (int j = 1; j < reel.GetLength(1); j++)
+            {
+                if (reel[0, j] != firstLeft)
+                {
+                    win = false;
+                }
+            }
+            for (int j = 2; j < reel.GetLength(2); j++)
+            {
+                if (reel[0, j] != firstLeft)
+                {
+                    win = false;
+                }
+            }
         }
         if (wager == ALL_VERTICAL_MODE)
         {
@@ -105,10 +128,6 @@ class Program
         if (wager == DIAGONAL_MODE)
         {
             Console.WriteLine("Checking the diagonal lines...");
-            if ()
-            {
-                Console.WriteLine("You won $6 dollars!");
-            }
         }
         if (wager == ALL_MODE)
         {
