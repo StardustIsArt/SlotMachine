@@ -104,6 +104,7 @@ class Program
                 if (reel[0, j] != firstLeft)
                 {
                     win = false;
+                    break;
                 }
             }
             for (int j = 1; j < reel.GetLength(1); j++)
@@ -111,6 +112,7 @@ class Program
                 if (reel[0, j] != firstLeft)
                 {
                     win = false;
+                    break;
                 }
             }
             for (int j = 2; j < reel.GetLength(2); j++)
@@ -118,7 +120,16 @@ class Program
                 if (reel[0, j] != firstLeft)
                 {
                     win = false;
+                    break;
                 }
+            }
+            if (win)
+            {
+                Console.WriteLine("Your won $9 dollars!");
+            }
+            else
+            {
+                Console.WriteLine("You didn't win any lines this round. Try another bet!");
             }
         }
         if (wager == ALL_VERTICAL_MODE)
