@@ -54,11 +54,17 @@ class Program
                 Console.WriteLine();
             }
         }
-
-        if (wager == 1)
+        
+        const int CENTER_HORIZONTAL_MODE = 1;
+        const int CENTER_VERTICAL_MODE = 2;
+        const int ALL_HORIZONTAL_MODE = 3;
+        const int ALL_VERTICAL_MODE = 4;
+        const int DIAGONAL_MODE = 5;
+        const int ALL_MODE = 6;
+        if (wager == CENTER_HORIZONTAL_MODE)
         {
             Console.WriteLine("Checking the horizontal center line...");
-            int first = reel[1, 0];
+            int first = reel[1, j];
             
             for (int j = 0; j < reel.GetLength(1); j++)
             {
@@ -68,7 +74,7 @@ class Program
                 }
             }
         }
-        if (wager == 2)
+        if (wager == CENTER_VERTICAL_MODE)
         {
             Console.WriteLine("Checking the vertical center line...");
             int first = reel[0, 1];
@@ -80,15 +86,15 @@ class Program
                 }
             }
         }
-        if (wager == 3)
+        if (wager == ALL_HORIZONTAL_MODE)
         {
             Console.WriteLine("Checking all the horizontal lines...");
         }
-        if (wager == 4)
+        if (wager == ALL_VERTICAL_MODE)
         {
             Console.WriteLine("Checking all the vertical lines...");
         }
-        if (wager == 5)
+        if (wager == DIAGONAL_MODE)
         {
             Console.WriteLine("Checking the diagonal lines...");
             if ()
@@ -96,7 +102,7 @@ class Program
                 Console.WriteLine("You won $6 dollars!");
             }
         }
-        if (wager == 6)
+        if (wager == ALL_MODE)
         {
             Console.WriteLine("Checking all available lines...");
             
