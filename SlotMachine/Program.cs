@@ -1,5 +1,7 @@
 ﻿using System.Data;
+using System.Drawing;
 using System.Reflection.Metadata.Ecma335;
+using Console = Colorful.Console;
 
 namespace SlotMachine;
 
@@ -69,10 +71,10 @@ class Program
             int first = reel[1, 0];
             for (int j = 0; j < reel.GetLength(1); j++)
             {
-                if (reel[1, j] != first) 
+                if (reel[1, j] != first);
                 {
-                    Console.WriteLine("You won $3 dollars!");
                     win = false;
+                    Console.WriteLine("You won $3 dollars!");
                     break;
                 }
             }
@@ -86,8 +88,8 @@ class Program
             {
                 if (reel[0, j] != first)
                 {
-                    Console.WriteLine("You won $3 dollars!");
                     win = false;
+                    Console.WriteLine("You won $3 dollars!");
                     break;
                 }
             }
