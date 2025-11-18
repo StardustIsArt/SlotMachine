@@ -10,10 +10,19 @@ class Program
     static void Main(string[] args)
     {
         Console.WriteLine("Step right up and check your luck!\n");
+        
         const int REEL_SIZE = 3;
         const int MAX_RANDOM = 100;
         const int MIN_RANDOM = 0;
         const int MONEY = 30;
+        const int CENTER_HORIZONTAL_MODE = 1;
+        const int CENTER_VERTICAL_MODE = 2;
+        const int ALL_HORIZONTAL_MODE = 3;
+        const int ALL_VERTICAL_MODE = 4;
+        const int DIAGONAL_MODE = 5;
+        const int ALL_MODE = 6;
+        const int MIDDLE_LINE = REEL_SIZE / 2;
+
         Random number = new Random();       
         int randomNumber = number.Next(MIN_RANDOM, MAX_RANDOM);
         
@@ -21,8 +30,8 @@ class Program
         Console.WriteLine($"How much would you like to bet: $1 - $6: \n" +
                           $"$1 - play horizontal center line\n" +
                           $"$2 - play vertical center line\n" +
-                          $"$3 - play all 3 horizontal lines\n" +
-                          $"$4 - play all 3 vertical lines\n" +
+                          $"$3 - play all horizontal lines\n" +
+                          $"$4 - play all vertical lines\n" +
                           $"$5 - play both diagonal lines\n" +
                           $"$6 - play all available lines (horizontal, vertical & diagonal)\n");
         int wager = Convert.ToInt32(Console.ReadLine());
@@ -57,13 +66,7 @@ class Program
             }
         }
         
-        const int CENTER_HORIZONTAL_MODE = 1;
-        const int CENTER_VERTICAL_MODE = 2;
-        const int ALL_HORIZONTAL_MODE = 3;
-        const int ALL_VERTICAL_MODE = 4;
-        const int DIAGONAL_MODE = 5;
-        const int ALL_MODE = 6;
-        
+    
         if (wager == CENTER_HORIZONTAL_MODE)
         {
             Console.WriteLine("Checking the horizontal center line...");
@@ -71,7 +74,7 @@ class Program
             int first = reel[1, 0];
             for (int j = 0; j < reel.GetLength(1); j++)
             {
-                if (reel[1, j] != first);
+                if (reel[MIDDLE_LINE, j] != first)
                 {
                     win = false;
                     Console.WriteLine("You won $3 dollars!");
@@ -86,7 +89,7 @@ class Program
             int first = reel[0, 1];
             for (int j = 0; j < reel.GetLength(0); j++)
             {
-                if (reel[0, j] != first)
+                if (reel[MIDDLE_LINE, j] != first)
                 {
                     win = false;
                     Console.WriteLine("You won $3 dollars!");
@@ -103,7 +106,7 @@ class Program
             int firstRight = reel[0, 2];
             for (int j = 0; j < reel.GetLength(0); j++)
             {
-                if (reel[0, j] != firstLeft)
+                if (reel[MIDDLE_LINE, j] != firstLeft)
                 {
                     win = false;
                     break;
@@ -111,7 +114,7 @@ class Program
             }
             for (int j = 1; j < reel.GetLength(1); j++)
             {
-                if (reel[0, j] != firstCenter)
+                if (reel[MIDDLE_LINE, j] != firstCenter)
                 {
                     win = false;
                     break;
@@ -119,7 +122,7 @@ class Program
             }
             for (int j = 2; j < reel.GetLength(2); j++)
             {
-                if (reel[0, j] != firstRight)
+                if (reel[MIDDLE_LINE, j] != firstRight)
                 {
                     win = false;
                     break;
@@ -155,7 +158,7 @@ class Program
                     win = false;
                 }
             }
-            for (int j = 2; j < reel.GetLength(2); j++)
+            for (int j = 2; j < reel.GetLength(1); j++)
             {
                 if (reel[0, j] != firstTopRight)
                 {
