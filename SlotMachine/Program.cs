@@ -24,8 +24,6 @@ class Program
         const int MIDDLE_LINE = REEL_SIZE / 2;
 
         Random number = new Random();       
-        //int randomNumber = number.Next(MIN_RANDOM, MAX_RANDOM);
-        
         Console.WriteLine($"Your starting balance is: ${MONEY}\n");
         Console.WriteLine($"How much would you like to bet: $1 - $6: \n" +
                           $"$1 - play horizontal center line\n" +
@@ -37,6 +35,7 @@ class Program
         int wager = Convert.ToInt32(Console.ReadLine());
         Console.WriteLine($"Your wager: ${wager}\n");
         
+        //  setting up the grid for reel reading and random number in each slot.
         int[,] reel;
         reel =  new int[REEL_SIZE, REEL_SIZE];
         for (int row = 0; row < REEL_SIZE; row++)
@@ -67,7 +66,7 @@ class Program
         }
         
     
-        if (wager == CENTER_HORIZONTAL_MODE)
+        if (wager == CENTER_HORIZONTAL_MODE)   // checking the center horizontal line dynamically
         {
             Console.WriteLine("Checking the horizontal center line...");
             bool win = true;
@@ -91,7 +90,7 @@ class Program
                 Console.WriteLine("You lost this round. Try again!");
             }
         }
-        if (wager == CENTER_VERTICAL_MODE)
+        if (wager == CENTER_VERTICAL_MODE)  // checking the center vertical line dynamically
         {
             Console.WriteLine("Checking the vertical center line...");
             bool win = true;
@@ -114,7 +113,7 @@ class Program
                 Console.WriteLine("You lost this round. Try again!");
             }
         }
-        if (wager == ALL_HORIZONTAL_MODE)
+        if (wager == ALL_HORIZONTAL_MODE)  // checking all horizontal lines dynamically
         {
             Console.WriteLine("Checking all the horizontal lines...");
             bool anyWins = false;
@@ -147,7 +146,7 @@ class Program
             }
            
         }
-        if (wager == ALL_VERTICAL_MODE)
+        if (wager == ALL_VERTICAL_MODE) // checking all vertical lines dynamically
         {
             Console.WriteLine("Checking all the vertical lines...");
             bool anyWins = false;
@@ -185,6 +184,7 @@ class Program
         {
             Console.WriteLine("Checking the diagonal lines...");
             int size = reel.GetLength(0);
+            // checking diagonal left-to-right (\)
             bool winLeft = true;
             int firstLeft = reel[0, 0];
             
@@ -196,6 +196,7 @@ class Program
                     break;
                 }   
             }
+            // checking diagonal right-to-left (/)
             bool winRight = true;
             int firstRight = reel[0, size - 1];
             for (int j = 1; j < size; j++)
