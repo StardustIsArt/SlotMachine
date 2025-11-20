@@ -24,7 +24,7 @@ class Program
         const int MIDDLE_LINE = REEL_SIZE / 2;
 
         Random number = new Random();       
-        int randomNumber = number.Next(MIN_RANDOM, MAX_RANDOM);
+        //int randomNumber = number.Next(MIN_RANDOM, MAX_RANDOM);
         
         Console.WriteLine($"Your starting balance is: ${MONEY}\n");
         Console.WriteLine($"How much would you like to bet: $1 - $6: \n" +
@@ -71,30 +71,47 @@ class Program
         {
             Console.WriteLine("Checking the horizontal center line...");
             bool win = true;
-            int first = reel[1, 0];
+            int middleRow = reel.GetLength(0) / 2;
+            int first = reel[middleRow, 0];
             for (int j = 0; j < reel.GetLength(1); j++)
             {
                 if (reel[MIDDLE_LINE, j] != first)
                 {
                     win = false;
-                    Console.WriteLine("You won $3 dollars!");
                     break;
                 }
+            }
+
+            if (win)
+            {
+                Console.WriteLine("You won $3 dollars!");
+            }
+            else
+            {
+                Console.WriteLine("You lost this round. Try again!");
             }
         }
         if (wager == CENTER_VERTICAL_MODE)
         {
             Console.WriteLine("Checking the vertical center line...");
             bool win = true;
-            int first = reel[0, 1];
+            int middleRow = reel.GetLength(0) / 2;
+            int first = reel[0, middleRow];
             for (int j = 0; j < reel.GetLength(0); j++)
             {
-                if (reel[MIDDLE_LINE, j] != first)
+                if (reel[j, MIDDLE_LINE] != first)
                 {
                     win = false;
-                    Console.WriteLine("You won $3 dollars!");
                     break;
                 }
+            }
+            if (win)
+            {
+                Console.WriteLine("You won $3 dollars!");
+            }
+            else
+            {
+                Console.WriteLine("You lost this round. Try again!");
             }
         }
         if (wager == ALL_HORIZONTAL_MODE)
