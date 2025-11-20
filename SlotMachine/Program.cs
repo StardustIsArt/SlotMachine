@@ -184,43 +184,37 @@ class Program
         if (wager == DIAGONAL_MODE)
         {
             Console.WriteLine("Checking the diagonal lines...");
-            bool win = true;
+            int size = reel.GetLength(0);
+            bool winLeft = true;
             int firstLeft = reel[0, 0];
-            int center = reel[1, 1];
-            int lastRight = reel[2, 2];
-            for (int j = 1; j < reel.GetLength(2); j++)
+            
+            for (int j = 1; j < size; j++)
             {
                 if (reel[j, j] != firstLeft)
                 {
-                    win = false;
-                    
+                    winLeft = false;
+                    break;
                 }   
             }
-
-            for (int j = 1; j < reel.GetLength(1); j++)
+            bool winRight = true;
+            int firstRight = reel[0, size - 1];
+            for (int j = 1; j < size; j++)
             {
-                if (reel[j, j] != center)
+                if (reel[j, size - 1 - j] != firstRight)
                 {
-                    win = false;
+                    winRight = false;
+                    break;
                 }
             }
-
-            for (int j = 2; j < reel.GetLength(2); j++)
-            {
-                if (reel[j, j] != lastRight)
-                {
-                    win = false;
-                }
-            }
-
-            if (win)
+            
+            if (winLeft || winRight)
             {
                 Console.WriteLine("Your won $12 dollars!");
             }
         }
         if (wager == ALL_MODE)
         {
-            Console.WriteLine("Checking all available lines...");
+            Console.WriteLine("You didn't win any lines this round. Try another bet!");
             
         }
     }
