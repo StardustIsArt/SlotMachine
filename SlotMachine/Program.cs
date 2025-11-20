@@ -118,7 +118,6 @@ class Program
         {
             Console.WriteLine("Checking all the horizontal lines...");
             bool anyWins = false;
-
             for (int row = 0; row < REEL_SIZE; row++)
             {
                 int first = reel[row, 0];
@@ -126,13 +125,12 @@ class Program
                 
                 for (int col = 0; col < reel.GetLength(0); col++)
                 {
-                    if (reel[MIDDLE_LINE, col] != first)
+                    if (reel[row, col] != first)
                     {
                         lineWin = false;
                         break;
                     }
                 }
-
                 if (lineWin)
                 {
                     anyWins = true;
@@ -152,32 +150,29 @@ class Program
         if (wager == ALL_VERTICAL_MODE)
         {
             Console.WriteLine("Checking all the vertical lines...");
-            bool win = true;
-            int firstTopLeft = reel[0, 0];
-            int firstTopCenter = reel[0, 1];
-            int firstTopRight = reel[0, 2];
-            for (int j = 0; j < reel.GetLength(0); j++)
+            bool anyWins = false;
+            for (int col = 0; col < REEL_SIZE; col++)
             {
-                if (reel[0, j] != firstTopLeft)
+                int first = reel[0, col];
+                bool lineWin = true;
+
+                for (int row = 0; row < reel.GetLength(0); row++)
                 {
-                    win = false;
+                    if (reel[row, col] != first)
+                    {
+                        lineWin = false;
+                        break;
+                    }
+                }
+
+                if (lineWin)
+                {
+                    anyWins = true;
+                    Console.WriteLine($"Line {col + 1} is a winner!");
                 }
             }
-            for (int j = 1; j < reel.GetLength(1); j++)
-            {
-                if (reel[0, j] != firstTopCenter)
-                {
-                    win = false;
-                }
-            }
-            for (int j = 2; j < reel.GetLength(1); j++)
-            {
-                if (reel[0, j] != firstTopRight)
-                {
-                    win = false;
-                }
-            }
-            if (win)
+
+            if (anyWins)
             {
                 Console.WriteLine("Your won $9 dollars!");
             }
