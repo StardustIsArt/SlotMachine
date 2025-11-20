@@ -117,35 +117,29 @@ class Program
         if (wager == ALL_HORIZONTAL_MODE)
         {
             Console.WriteLine("Checking all the horizontal lines...");
-            bool win = true;
-            int firstLeft = reel[0, 0];
-            int firstCenter = reel[0, 1];
-            int firstRight = reel[0, 2];
-            for (int j = 0; j < reel.GetLength(0); j++)
+            bool anyWins = false;
+
+            for (int row = 0; row < REEL_SIZE; row++)
             {
-                if (reel[MIDDLE_LINE, j] != firstLeft)
+                int first = reel[row, 0];
+                bool lineWin = true;
+                
+                for (int col = 0; col < reel.GetLength(0); col++)
                 {
-                    win = false;
-                    break;
+                    if (reel[MIDDLE_LINE, col] != first)
+                    {
+                        lineWin = false;
+                        break;
+                    }
+                }
+
+                if (lineWin)
+                {
+                    anyWins = true;
+                    Console.WriteLine($"Line {row + 1} is a winner!");
                 }
             }
-            for (int j = 1; j < reel.GetLength(1); j++)
-            {
-                if (reel[MIDDLE_LINE, j] != firstCenter)
-                {
-                    win = false;
-                    break;
-                }
-            }
-            for (int j = 2; j < reel.GetLength(2); j++)
-            {
-                if (reel[MIDDLE_LINE, j] != firstRight)
-                {
-                    win = false;
-                    break;
-                }
-            }
-            if (win)
+            if (anyWins)
             {
                 Console.WriteLine("Your won $9 dollars!");
             }
@@ -153,6 +147,7 @@ class Program
             {
                 Console.WriteLine("You didn't win any lines this round. Try another bet!");
             }
+           
         }
         if (wager == ALL_VERTICAL_MODE)
         {
