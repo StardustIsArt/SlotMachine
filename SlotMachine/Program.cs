@@ -21,6 +21,10 @@
             const int DIAGONAL_MODE = 5;
             const int ALL_MODE = 6;
             const int MIDDLE_LINE = REEL_SIZE / 2;
+            const int MIDDLE_LINE_PAYOUT = 3;
+            const int HORIZONTAL_PAYOUT = 9;
+            const int VERTICAL_PAYOUT = 20;
+            const int DIAGONAL_PAYOUT = 12;
             int money = 30;
             Random number = new Random();   
             while (money > 0) {
@@ -81,12 +85,12 @@
                 if (win)
                 {
                     Console.WriteLine("You won $3 dollars!");
-                    money += 3;
+                    money += MIDDLE_LINE_PAYOUT;
                 }
                 else
                 {
                     Console.WriteLine("You lost this round. Try again!");
-                    money -= 3;
+                    money -= MIDDLE_LINE_PAYOUT;
                 }
             }
             if (wager == CENTER_VERTICAL_MODE)  // checking the center vertical line dynamically
@@ -106,12 +110,12 @@
                 if (win)
                 {
                     Console.WriteLine("You won $3 dollars!");
-                    money += 3;
+                    money += MIDDLE_LINE_PAYOUT;
                 }
                 else
                 {
                     Console.WriteLine("You lost this round. Try again!");
-                    money -= 3;
+                    money -= MIDDLE_LINE_PAYOUT;
                 }
             }
             if (wager == ALL_HORIZONTAL_MODE)  // checking all horizontal lines dynamically
@@ -140,12 +144,12 @@
                 if (anyWins)
                 {
                     Console.WriteLine("Your won $9 dollars!");
-                    money += 9;
+                    money += HORIZONTAL_PAYOUT;
                 }
                 else
                 {
                     Console.WriteLine("You didn't win any lines this round. Try another bet!");
-                    money -= 9;
+                    money -= HORIZONTAL_PAYOUT;
                 }
             }
             if (wager == ALL_VERTICAL_MODE) // checking all vertical lines dynamically
@@ -176,12 +180,12 @@
                 if (anyWins)
                 {
                     Console.WriteLine("Your won $20 dollars!");
-                    money += 20;
+                    money += VERTICAL_PAYOUT;
                 }
                 else
                 {
                     Console.WriteLine("You didn't win any lines this round. Try another bet!");
-                    money -= 20;
+                    money -= VERTICAL_PAYOUT;
                 }
             }
             if (wager == DIAGONAL_MODE)
@@ -215,12 +219,12 @@
                 if (winLeft || winRight)
                 {
                     Console.WriteLine("Your won $12 dollars!");
-                    money += 12;
+                    money += DIAGONAL_PAYOUT;
                 }
                 else
                 {
                     Console.WriteLine("You lost this round. Try another bet!");
-                    money -= 12;
+                    money -= DIAGONAL_PAYOUT;
                 }
             }
             if (wager == ALL_MODE)
