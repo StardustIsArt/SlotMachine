@@ -126,7 +126,6 @@
                 {
                     int first = reel[row, 0];
                     bool lineWin = true;
-                    
                     for (int col = 0; col < reel.GetLength(0); col++)
                     {
                         if (reel[row, col] != first)
@@ -160,7 +159,6 @@
                 {
                     int first = reel[0, col];
                     bool lineWin = true;
-
                     for (int row = 0; row < reel.GetLength(0); row++)
                     {
                         if (reel[row, col] != first)
@@ -169,14 +167,12 @@
                             break;
                         }
                     }
-
                     if (lineWin)
                     {
                         anyWins = true;
                         Console.WriteLine($"Line {col + 1} is a winner!");
                     }
                 }
-
                 if (anyWins)
                 {
                     Console.WriteLine("Your won $20 dollars!");
@@ -215,7 +211,6 @@
                         break;
                     }
                 }
-                
                 if (winLeft || winRight)
                 {
                     Console.WriteLine("Your won $12 dollars!");
