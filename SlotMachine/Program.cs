@@ -29,16 +29,35 @@
             Random number = new Random();   
             while (money > 0) {
             Console.WriteLine($"Your starting balance is: ${money}\n");
-            Console.WriteLine($"How much would you like to bet: $1 - $6: \n" +
-                              $"$1 - play horizontal center line\n" +
-                              $"$2 - play vertical center line\n" +
-                              $"$3 - play all horizontal lines\n" +
-                              $"$4 - play all vertical lines\n" +
-                              $"$5 - play both diagonal lines\n" +
-                              $"$6 - play all available lines (horizontal, vertical & diagonal)\n");
-            int wager = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine($"Your wager: ${wager}\n");
-            
+            Console.WriteLine($"How much would you like to bet: 1 - 6: \n" +
+                              $"1 - play horizontal center line\n" +
+                              $"2 - play vertical center line\n" +
+                              $"3 - play all horizontal lines\n" +
+                              $"4 - play all vertical lines\n" +
+                              $"5 - play both diagonal lines\n" +
+                              $"6 - play all available lines (horizontal, vertical & diagonal)\n");
+            Console.WriteLine("What is your choice in wager (1 - 6): ");
+            int wager = 0;
+            // to check if the user input is valid and in the correct number range.
+            bool validInput = false;
+            while (!validInput)
+            {
+                string input = Console.ReadLine();
+                bool success = int.TryParse(input, out wager);
+                if (!success)
+                {
+                    Console.WriteLine($"Invalid input, please choose a valid number between 1 and 6.");
+                    continue;
+                }
+
+                if (wager < MIN_RANDOM || wager > MAX_RANDOM)
+                {
+                    Console.WriteLine($"Invalid input, please choose a valid number between 1 and 6.");
+                    continue;
+                }
+                validInput = true;
+            }
+            Console.WriteLine($"Your wager is: {wager}\n");
             //  setting up the grid for reel reading and random number in each slot.
             int[,] reel;
             reel =  new int[REEL_SIZE, REEL_SIZE];
