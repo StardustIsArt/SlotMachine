@@ -11,20 +11,7 @@
         {
             Console.WriteLine("Step right up and check your luck!\n");
             
-            const int REEL_SIZE = 3;
-            const int MAX_RANDOM = 100;
-            const int MIN_RANDOM = 0;
-            const int CENTER_HORIZONTAL_MODE = 1;
-            const int CENTER_VERTICAL_MODE = 2;
-            const int ALL_HORIZONTAL_MODE = 3;
-            const int ALL_VERTICAL_MODE = 4;
-            const int DIAGONAL_MODE = 5;
-            const int ALL_MODE = 6;
-            const int MIDDLE_LINE = REEL_SIZE / 2;
-            const int MIDDLE_LINE_PAYOUT = 3;
-            const int HORIZONTAL_PAYOUT = 9;
-            const int VERTICAL_PAYOUT = 20;
-            const int DIAGONAL_PAYOUT = 12;
+            
             int money = 30;
             Random number = new Random();   
             while (money > 0) {
@@ -50,7 +37,7 @@
                     continue;
                 }
 
-                if (wager < MIN_RANDOM || wager > MAX_RANDOM)
+                if (wager < MachineConstants.MIN_RANDOM || wager > MachineConstants.MAX_RANDOM)
                 {
                     Console.WriteLine($"Invalid input, please choose a valid number between 1 and 6.");
                     continue;
@@ -60,34 +47,34 @@
             Console.WriteLine($"Your wager is: {wager}\n");
             //  setting up the grid for reel reading and random number in each slot.
             int[,] reel;
-            reel =  new int[REEL_SIZE, REEL_SIZE];
-            for (int row = 0; row < REEL_SIZE; row++)
+            reel =  new int[MachineConstants.REEL_SIZE, MachineConstants.REEL_SIZE];
+            for (int row = 0; row < MachineConstants.REEL_SIZE; row++)
             {
-                for (int col = 0; col < REEL_SIZE; col++)
+                for (int col = 0; col < MachineConstants.REEL_SIZE; col++)
                 {
-                    reel[row, col] = number.Next(MIN_RANDOM, MAX_RANDOM);
+                    reel[row, col] = number.Next(MachineConstants.MIN_RANDOM, MachineConstants.MAX_RANDOM);
                 }
             }
             Console.WriteLine();
-            for (int row = 0; row < REEL_SIZE; row++)
+            for (int row = 0; row < MachineConstants.REEL_SIZE; row++)
             {
-                for (int col = 0; col < REEL_SIZE; col++)
+                for (int col = 0; col < MachineConstants.REEL_SIZE; col++)
                 {
                     Console.Write($" {reel[row, col]}");
-                    if (col < REEL_SIZE - 1) Console.Write(" |");
+                    if (col < MachineConstants.REEL_SIZE - 1) Console.Write(" |");
                 }
                 Console.WriteLine();
-                if (row < REEL_SIZE - 1)
+                if (row < MachineConstants.REEL_SIZE - 1)
                 {
-                    for (int i = 0; i < REEL_SIZE; i++)
+                    for (int i = 0; i < MachineConstants.REEL_SIZE; i++)
                     {
                         Console.Write("----");
-                        if (i < REEL_SIZE - 1) Console.Write("+");
+                        if (i < MachineConstants.REEL_SIZE - 1) Console.Write("+");
                     }
                     Console.WriteLine();
                 }
             }
-            if (wager == CENTER_HORIZONTAL_MODE)   // checking the center horizontal line dynamically
+            if (wager == MachineConstants.CENTER_HORIZONTAL_MODE)   // checking the center horizontal line dynamically
             {
                 Console.WriteLine("Checking the horizontal center line...");
                 bool win = true;
@@ -95,7 +82,7 @@
                 int first = reel[middleRow, 0];
                 for (int j = 0; j < reel.GetLength(1); j++)
                 {
-                    if (reel[MIDDLE_LINE, j] != first)
+                    if (reel[MachineConstants.MIDDLE_LINE, j] != first)
                     {
                         win = false;
                         break;
@@ -104,15 +91,15 @@
                 if (win)
                 {
                     Console.WriteLine("You won $3 dollars!");
-                    money += MIDDLE_LINE_PAYOUT;
+                    money += MachineConstants.MIDDLE_LINE_PAYOUT;
                 }
                 else
                 {
                     Console.WriteLine("You lost this round. Try again!");
-                    money -= MIDDLE_LINE_PAYOUT;
+                    money -= MachineConstants.MIDDLE_LINE_PAYOUT;
                 }
             }
-            if (wager == CENTER_VERTICAL_MODE)  // checking the center vertical line dynamically
+            if (wager == MachineConstants.CENTER_VERTICAL_MODE)  // checking the center vertical line dynamically
             {
                 Console.WriteLine("Checking the vertical center line...");
                 bool win = true;
@@ -120,7 +107,7 @@
                 int first = reel[0, middleRow];
                 for (int j = 0; j < reel.GetLength(0); j++)
                 {
-                    if (reel[j, MIDDLE_LINE] != first)
+                    if (reel[j, MachineConstants.MIDDLE_LINE] != first)
                     {
                         win = false;
                         break;
@@ -129,19 +116,19 @@
                 if (win)
                 {
                     Console.WriteLine("You won $3 dollars!");
-                    money += MIDDLE_LINE_PAYOUT;
+                    money += MachineConstants.MIDDLE_LINE_PAYOUT;
                 }
                 else
                 {
                     Console.WriteLine("You lost this round. Try again!");
-                    money -= MIDDLE_LINE_PAYOUT;
+                    money -= MachineConstants.MIDDLE_LINE_PAYOUT;
                 }
             }
-            if (wager == ALL_HORIZONTAL_MODE)  // checking all horizontal lines dynamically
+            if (wager == MachineConstants.ALL_HORIZONTAL_MODE)  // checking all horizontal lines dynamically
             {
                 Console.WriteLine("Checking all the horizontal lines...");
                 bool anyWins = false;
-                for (int row = 0; row < REEL_SIZE; row++)
+                for (int row = 0; row < MachineConstants.REEL_SIZE; row++)
                 {
                     int first = reel[row, 0];
                     bool lineWin = true;
@@ -162,19 +149,19 @@
                 if (anyWins)
                 {
                     Console.WriteLine("Your won $9 dollars!");
-                    money += HORIZONTAL_PAYOUT;
+                    money += MachineConstants.HORIZONTAL_PAYOUT;
                 }
                 else
                 {
                     Console.WriteLine("You didn't win any lines this round. Try another bet!");
-                    money -= HORIZONTAL_PAYOUT;
+                    money -= MachineConstants.HORIZONTAL_PAYOUT;
                 }
             }
-            if (wager == ALL_VERTICAL_MODE) // checking all vertical lines dynamically
+            if (wager == MachineConstants.ALL_VERTICAL_MODE) // checking all vertical lines dynamically
             {
                 Console.WriteLine("Checking all the vertical lines...");
                 bool anyWins = false;
-                for (int col = 0; col < REEL_SIZE; col++)
+                for (int col = 0; col < MachineConstants.REEL_SIZE; col++)
                 {
                     int first = reel[0, col];
                     bool lineWin = true;
@@ -195,15 +182,15 @@
                 if (anyWins)
                 {
                     Console.WriteLine("Your won $20 dollars!");
-                    money += VERTICAL_PAYOUT;
+                    money += MachineConstants.VERTICAL_PAYOUT;
                 }
                 else
                 {
                     Console.WriteLine("You didn't win any lines this round. Try another bet!");
-                    money -= VERTICAL_PAYOUT;
+                    money -= MachineConstants.VERTICAL_PAYOUT;
                 }
             }
-            if (wager == DIAGONAL_MODE)
+            if (wager == MachineConstants.DIAGONAL_MODE)
             {
                 Console.WriteLine("Checking the diagonal lines...");
                 int size = reel.GetLength(0);
@@ -233,15 +220,15 @@
                 if (winLeft || winRight)
                 {
                     Console.WriteLine("Your won $12 dollars!");
-                    money += DIAGONAL_PAYOUT;
+                    money += MachineConstants.DIAGONAL_PAYOUT;
                 }
                 else
                 {
                     Console.WriteLine("You lost this round. Try another bet!");
-                    money -= DIAGONAL_PAYOUT;
+                    money -= MachineConstants.DIAGONAL_PAYOUT;
                 }
             }
-            if (wager == ALL_MODE)
+            if (wager == MachineConstants.ALL_MODE)
             {
                 Console.WriteLine("You didn't win any lines this round. Try another bet!");
             }
