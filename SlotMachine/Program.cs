@@ -10,8 +10,6 @@
         static void Main(string[] args)
         {
             Console.WriteLine("Step right up and check your luck!\n");
-            
-            
             int money = 30;
             Random number = new Random();   
             while (money > 0) {
