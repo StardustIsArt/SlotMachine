@@ -12,13 +12,12 @@
             int money = MachineConstants.MONEY_START_OF_GAME;
             Random number = new Random();   
             while (money > 0) {
-                Console.WriteLine($"Your starting balance is: ${money}\n");
+                UIMethods.PrintStartingMoney();
                 UIMethods.PrintBettingOptions();
                 UIMethods.PrintWagerChoice();
                 int wager = MachineConstants.ZERO;
                 UIMethods.GetValidInput();
-              
-                Console.WriteLine($"Your wager is: {wager}\n");
+                UIMethods.PrintWagerBet();
                 //  setting up the grid for reel reading and random number in each slot.
                 int[,] reel;
                 reel =  new int[MachineConstants.REEL_SIZE, MachineConstants.REEL_SIZE];

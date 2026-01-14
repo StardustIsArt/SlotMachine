@@ -16,6 +16,18 @@ public class UIMethods
                           $"{MachineConstants.DIAGONAL_MODE} - play both diagonal lines\n" +
                           $"{MachineConstants.ALL_MODE} - play all available lines (horizontal, vertical & diagonal)\n");
     }
+
+    public static void PrintStartingMoney()
+    {
+        int money = MachineConstants.MONEY_START_OF_GAME;
+        Console.WriteLine($"Your starting balance is: {money}\n");
+    }
+
+    public static void PrintWagerBet()
+    {
+        int wager = MachineConstants.ZERO;
+        Console.WriteLine($"Your bet is: {wager}\n");
+    }
     public static void PrintWagerChoice()
     {
         Console.WriteLine("What is your choice in wager (1 - 6): ");
