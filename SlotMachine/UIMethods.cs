@@ -16,4 +16,8 @@ public class UIMethods
                           $"5 - play both diagonal lines\n" +
                           $"6 - play all available lines (horizontal, vertical & diagonal)\n");
     }
+    public static void PrintWagerChoice()
+    {
+        Console.WriteLine("What is your choice in wager (1 - 6): ");
+    }
 }

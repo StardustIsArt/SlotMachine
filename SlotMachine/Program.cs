@@ -9,13 +9,13 @@
         static void Main(string[] args)
         {
             UIMethods.PrintWelcome();
-            int money = 30;
+            int money = MachineConstants.MONEY_START_OF_GAME;
             Random number = new Random();   
             while (money > 0) {
                 Console.WriteLine($"Your starting balance is: ${money}\n");
                 UIMethods.PrintBettingOptions();
-                Console.WriteLine("What is your choice in wager (1 - 6): ");
-                int wager = 0;
+                UIMethods.PrintWagerChoice();
+                int wager = MachineConstants.ZERO;
                 // to check if the user input is valid and in the correct number range.
                 bool validInput = false;
                 while (!validInput)
