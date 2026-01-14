@@ -47,24 +47,7 @@
                     }
                 }
                 Console.WriteLine();
-                for (int row = 0; row < MachineConstants.REEL_SIZE; row++)
-                {
-                    for (int col = 0; col < MachineConstants.REEL_SIZE; col++)
-                    {
-                        Console.Write($" {reel[row, col]}");
-                        if (col < MachineConstants.REEL_SIZE - 1) Console.Write(" |");
-                    }
-                    Console.WriteLine();
-                    if (row < MachineConstants.REEL_SIZE - 1)
-                    {
-                        for (int i = 0; i < MachineConstants.REEL_SIZE; i++)
-                        {
-                            Console.Write("----");
-                            if (i < MachineConstants.REEL_SIZE - 1) Console.Write("+");
-                        }
-                        Console.WriteLine();
-                    }
-                }
+                UIMethods.PrintReel(reel);
                 if (wager == MachineConstants.CENTER_HORIZONTAL_MODE)   // checking the center horizontal line dynamically
                 {
                     Console.WriteLine("Checking the horizontal center line...");

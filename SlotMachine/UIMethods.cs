@@ -20,4 +20,27 @@ public class UIMethods
     {
         Console.WriteLine("What is your choice in wager (1 - 6): ");
     }
+
+    public static void PrintReel(int[,] reel)
+    {
+        for (int row = 0; row < MachineConstants.REEL_SIZE; row++)
+        {
+            for (int col = 0; col < MachineConstants.REEL_SIZE; col++)
+            {
+                Console.Write($" {reel[row, col]}");
+                if (col < MachineConstants.REEL_SIZE - 1) Console.Write(" |");
+            }
+            Console.WriteLine();
+            if (row < MachineConstants.REEL_SIZE - 1)
+            {
+                for (int i = 0; i < MachineConstants.REEL_SIZE; i++)
+                {
+                    Console.Write("----");
+                    if (i < MachineConstants.REEL_SIZE - 1) Console.Write("+");
+                }
+                Console.WriteLine();
+            }
+        }
+        Console.WriteLine();
+    }
 }
