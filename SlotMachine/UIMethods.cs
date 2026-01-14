@@ -20,7 +20,6 @@ public class UIMethods
     {
         Console.WriteLine("What is your choice in wager (1 - 6): ");
     }
-
     public static void PrintReel(int[,] reel)
     {
         for (int row = 0; row < MachineConstants.REEL_SIZE; row++)
@@ -42,5 +41,27 @@ public class UIMethods
             }
         }
         Console.WriteLine();
+    }
+    // to check if the user input is valid and in the correct number range.
+    public static void GetValidInput()
+    {
+        int wager;
+        bool validInput = false;
+        while (!validInput)
+        {
+            string input = Console.ReadLine();
+            bool success = int.TryParse(input, out wager);
+            if (!success)
+            {
+                Console.WriteLine($"Invalid input, please choose a valid number between {MachineConstants.CENTER_HORIZONTAL_MODE} and {MachineConstants.ALL_MODE}.");
+                continue;
+            }
+            if (wager < MachineConstants.MIN_RANDOM || wager > MachineConstants.MAX_RANDOM)
+            {
+                Console.WriteLine($"Invalid input, please choose a valid number between {MachineConstants.CENTER_HORIZONTAL_MODE} and {MachineConstants.ALL_MODE}.");
+                continue;
+            }
+            validInput = true;
+        }
     }
 }

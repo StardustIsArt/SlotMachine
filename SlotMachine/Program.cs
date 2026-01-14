@@ -16,25 +16,8 @@
                 UIMethods.PrintBettingOptions();
                 UIMethods.PrintWagerChoice();
                 int wager = MachineConstants.ZERO;
-                // to check if the user input is valid and in the correct number range.
-                bool validInput = false;
-                while (!validInput)
-                {
-                    string input = Console.ReadLine();
-                    bool success = int.TryParse(input, out wager);
-                    if (!success)
-                    {
-                        Console.WriteLine($"Invalid input, please choose a valid number between 1 and 6.");
-                        continue;
-                    }
-
-                    if (wager < MachineConstants.MIN_RANDOM || wager > MachineConstants.MAX_RANDOM)
-                    {
-                        Console.WriteLine($"Invalid input, please choose a valid number between 1 and 6.");
-                        continue;
-                    }
-                    validInput = true;
-                }
+                UIMethods.GetValidInput();
+              
                 Console.WriteLine($"Your wager is: {wager}\n");
                 //  setting up the grid for reel reading and random number in each slot.
                 int[,] reel;
