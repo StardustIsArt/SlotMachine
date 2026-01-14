@@ -9,12 +9,12 @@ public class UIMethods
     public static void PrintBettingOptions()
     {
         Console.WriteLine($"How much would you like to bet: 1 - 6: \n" +
-                          $"1 - play horizontal center line\n" +
-                          $"2 - play vertical center line\n" +
-                          $"3 - play all horizontal lines\n" +
-                          $"4 - play all vertical lines\n" +
-                          $"5 - play both diagonal lines\n" +
-                          $"6 - play all available lines (horizontal, vertical & diagonal)\n");
+                          $"{MachineConstants.CENTER_HORIZONTAL_MODE} - play horizontal center line\n" +
+                          $"{MachineConstants.CENTER_VERTICAL_MODE} - play vertical center line\n" +
+                          $"{MachineConstants.ALL_HORIZONTAL_MODE} - play all horizontal lines\n" +
+                          $"{MachineConstants.ALL_VERTICAL_MODE} - play all vertical lines\n" +
+                          $"{MachineConstants.DIAGONAL_MODE} - play both diagonal lines\n" +
+                          $"{MachineConstants.ALL_MODE} - play all available lines (horizontal, vertical & diagonal)\n");
     }
     public static void PrintWagerChoice()
     {
