@@ -75,10 +75,9 @@ public class UIMethods
             return wager;
         }
     }
-    public static int PrintCurrentBalance()
+    public static int PrintCurrentBalance(int money)
     {
-        int money = UIMethods.GetValidInput();
-        Console.WriteLine($"Your new balance is: ${money}\n"); 
+        Console.WriteLine($"Your new balance is: ${money}\n");
         return money;
     }
 }
