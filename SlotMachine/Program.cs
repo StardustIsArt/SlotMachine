@@ -8,7 +8,7 @@
     {
         static void Main(string[] args)
         {
-            UIMethods.PrintWelcome();
+            UIMethods.PrintWelcomeMessage();
             int money = MachineConstants.MONEY_START_OF_GAME;
             Random number = new Random();   
             while (money > 0) {
