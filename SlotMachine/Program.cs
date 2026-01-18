@@ -11,12 +11,13 @@
             UIMethods.PrintWelcomeMessage();
             int money = MachineConstants.MONEY_START_OF_GAME;
             UIMethods.PrintStartingMoney();
+            UIMethods.PrintBettingOptions();
             Random number = new Random();   
             while (money > 0)
             {
                 UIMethods.PrintCurrentMoney();
-                UIMethods.PrintBettingOptions();
-                UIMethods.PrintWagerChoice();
+                //UIMethods.PrintBettingOptions();
+                UIMethods.AskWagerChoice();
                 int wager = UIMethods.GetValidInput();
                 UIMethods.PrintWagerBet(wager);
                 //  setting up the grid for reel reading and random number in each slot.
