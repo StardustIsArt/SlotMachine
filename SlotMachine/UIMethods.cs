@@ -21,15 +21,13 @@ public class UIMethods
         int money = MachineConstants.MONEY_START_OF_GAME;
         Console.WriteLine($"Your starting balance is: ${money}\n");
     }
-    public static int PrintWagerBet(int wager)
+    public static void PrintWagerBet(int wager)
     {
         Console.WriteLine($"Your bet is: {wager}\n");
-        return wager;
     }
     public static void AskWagerChoice()
     {
         Console.WriteLine("What is your choice in wager (1 - 6): ");
-        //return int.Parse(Console.ReadLine());
     }
     public static void PrintReel(int[,] reel)
     {
@@ -77,13 +75,10 @@ public class UIMethods
             return wager;
         }
     }
-    public static int PrintCurrentMoney()
+    public static int PrintCurrentBalance()
     {
         int money = UIMethods.GetValidInput();
-        while (money > MachineConstants.MONEY_START_OF_GAME)
-        {
-            Console.Write($"Your current balance is: {money}\n");
-        }
+        Console.WriteLine($"Your new balance is: ${money}\n"); 
         return money;
     }
 }

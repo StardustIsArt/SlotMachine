@@ -15,8 +15,7 @@
             Random number = new Random();   
             while (money > 0)
             {
-                UIMethods.PrintCurrentMoney();
-                //UIMethods.PrintBettingOptions();
+                UIMethods.PrintCurrentBalance();
                 UIMethods.AskWagerChoice();
                 int wager = UIMethods.GetValidInput();
                 UIMethods.PrintWagerBet(wager);
@@ -190,7 +189,8 @@
                 {
                     Console.WriteLine("You didn't win any lines this round. Try another bet!");
                 }
-                Console.WriteLine($"Your new balance is: ${money}\n"); 
+
+                UIMethods.PrintCurrentBalance();
             }
         }
     }
