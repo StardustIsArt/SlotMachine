@@ -11,6 +11,8 @@ public class MachineConstants
     public const int ZERO = 0;
     
     // Betting modes
+    public const int MIN_BET = 1;
+    public const int MAX_BET = 6;
     public const int CENTER_HORIZONTAL_MODE = 1;
     public const int CENTER_VERTICAL_MODE = 2;
     public const int ALL_HORIZONTAL_MODE = 3;

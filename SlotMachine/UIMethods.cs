@@ -6,7 +6,6 @@ public class UIMethods
     {
         Console.WriteLine("Step right up and check your luck!\n");
     }
-
     public static void PrintBettingOptions()
     {
         Console.WriteLine($"How much would you like to bet: 1 - 6: \n" +
@@ -17,24 +16,21 @@ public class UIMethods
                           $"{MachineConstants.DIAGONAL_MODE} - play both diagonal lines\n" +
                           $"{MachineConstants.ALL_MODE} - play all available lines (horizontal, vertical & diagonal)\n");
     }
-
     public static void PrintStartingMoney()
     {
         int money = MachineConstants.MONEY_START_OF_GAME;
         Console.WriteLine($"Your starting balance is: {money}\n");
     }
-
-    public static void PrintWagerBet()
+    public static void PrintWagerBet(int i)
     {
-        int wager = MachineConstants.ZERO;
+        int wager = UIMethods.GetValidInput();
         Console.WriteLine($"Your bet is: {wager}\n");
     }
-
-    public static void PrintWagerChoice()
+    public static int PrintWagerChoice()
     {
         Console.WriteLine("What is your choice in wager (1 - 6): ");
+        return int.Parse(Console.ReadLine());
     }
-
     public static void PrintReel(int[,] reel)
     {
         for (int row = 0; row < MachineConstants.REEL_SIZE; row++)
@@ -44,7 +40,6 @@ public class UIMethods
                 Console.Write($" {reel[row, col]}");
                 if (col < MachineConstants.REEL_SIZE - 1) Console.Write(" |");
             }
-
             Console.WriteLine();
             if (row < MachineConstants.REEL_SIZE - 1)
             {
@@ -53,14 +48,12 @@ public class UIMethods
                     Console.Write("----");
                     if (i < MachineConstants.REEL_SIZE - 1) Console.Write("+");
                 }
-
                 Console.WriteLine();
             }
         }
-
         Console.WriteLine();
     }
-
+  
     // to check if the user input is valid and in the correct number range.
     public static int GetValidInput()
     {
@@ -71,19 +64,28 @@ public class UIMethods
             {
                 Console.WriteLine(
                     "Invalid input, please choose a valid number between " +
-                    $"{MachineConstants.CENTER_HORIZONTAL_MODE} and {MachineConstants.ALL_MODE}.");
+                    $"{MachineConstants.MIN_BET} and {MachineConstants.MAX_BET}.");
                 continue;
             }
             if (wager < MachineConstants.MIN_RANDOM || wager > MachineConstants.MAX_RANDOM)
             {
                 Console.WriteLine(
                     "Invalid input, please choose a valid number between " +
-                    $"{MachineConstants.CENTER_HORIZONTAL_MODE} and {MachineConstants.ALL_MODE}.");
+                    $"{MachineConstants.MIN_BET} and {MachineConstants.MAX_BET}.");
                 continue;
             }
             return wager;
         }
-        
+    }
+    public static int PrintCurrentMoney()
+    {
+        int wager = UIMethods.PrintWagerChoice();
+        int money = UIMethods.GetValidInput();
+        while (money > MachineConstants.MONEY_START_OF_GAME)
+        {
+            Console.Write($"Your current balance is: {wager}\n");
+        }
+        return wager;
     }
 }
     

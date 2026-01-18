@@ -10,14 +10,15 @@
         {
             UIMethods.PrintWelcomeMessage();
             int money = MachineConstants.MONEY_START_OF_GAME;
+            UIMethods.PrintStartingMoney();
             Random number = new Random();   
-            while (money > 0) {
-                UIMethods.PrintStartingMoney();
+            while (money > 0)
+            {
+                UIMethods.PrintCurrentMoney();
                 UIMethods.PrintBettingOptions();
                 UIMethods.PrintWagerChoice();
-                int wager = MachineConstants.ZERO;
-                UIMethods.GetValidInput();
-                UIMethods.PrintWagerBet();
+                int wager = UIMethods.GetValidInput();
+                UIMethods.PrintWagerBet(wager);
                 //  setting up the grid for reel reading and random number in each slot.
                 int[,] reel;
                 reel =  new int[MachineConstants.REEL_SIZE, MachineConstants.REEL_SIZE];
