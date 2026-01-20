@@ -12,5 +12,6 @@ public class GameLogic
                 reel[row, col] = number.Next(MachineConstants.MIN_RANDOM, MachineConstants.MIN_RANDOM);
             }
         }
+        return reel;
     }
 }
