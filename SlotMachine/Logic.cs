@@ -1,6 +1,6 @@
 namespace SlotMachine;
 
-public class Logic
+public class GameLogic
 {
     
 }
