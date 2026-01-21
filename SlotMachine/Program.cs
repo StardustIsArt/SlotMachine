@@ -20,15 +20,7 @@
                 int wager = UIMethods.GetValidInput();
                 UIMethods.PrintWagerBet(wager);
                 //  setting up the grid for reel reading and random number in each slot.
-                int[,] reel;
-                reel =  new int[MachineConstants.REEL_SIZE, MachineConstants.REEL_SIZE];
-                for (int row = 0; row < MachineConstants.REEL_SIZE; row++)
-                {
-                    for (int col = 0; col < MachineConstants.REEL_SIZE; col++)
-                    {
-                        reel[row, col] = number.Next(MachineConstants.MIN_RANDOM, MachineConstants.MAX_RANDOM);
-                    }
-                }
+                int[,] reel = GameLogic.GenerateReel(random: number);
                 Console.WriteLine();
                 UIMethods.PrintReel(reel);
                 if (wager == MachineConstants.CENTER_HORIZONTAL_MODE)   // checking the center horizontal line dynamically
