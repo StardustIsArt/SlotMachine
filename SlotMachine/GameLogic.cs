@@ -9,7 +9,7 @@ public class GameLogic
         {
             for (int col = 0; col < MachineConstants.REEL_SIZE; col++)
             {
-                reel[row, col] = random.Next(MachineConstants.MIN_RANDOM, MachineConstants.MIN_RANDOM);
+                reel[row, col] = random.Next(MachineConstants.MIN_RANDOM, MachineConstants.MAX_RANDOM);
             }
         }
         return reel;
