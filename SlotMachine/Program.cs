@@ -41,41 +41,7 @@
                 }
                 if (wager == MachineConstants.DIAGONAL_MODE)
                 {
-                    UIMethods.DisplayDiagonalLineCheck();
-                    int size = reel.GetLength(0);
-                    // checking diagonal left-to-right (\)
-                    bool winLeft = true;
-                    int firstLeft = reel[0, 0];
-                
-                    for (int j = 1; j < size; j++)
-                    {
-                        if (reel[j, j] != firstLeft)
-                        {
-                            winLeft = false;
-                            break;
-                        }   
-                    }
-                    // checking diagonal right-to-left (/)
-                    bool winRight = true;
-                    int firstRight = reel[0, size - 1];
-                    for (int j = 1; j < size; j++)
-                    {
-                        if (reel[j, size - 1 - j] != firstRight)
-                        {
-                            winRight = false;
-                            break;
-                        }
-                    }
-                    if (winLeft || winRight)
-                    {
-                        Console.WriteLine("Your won $12 dollars!");
-                        money += MachineConstants.DIAGONAL_PAYOUT;
-                    }
-                    else
-                    {
-                        UIMethods.DisplayRoundLoss();
-                        money -= MachineConstants.DIAGONAL_PAYOUT;
-                    }
+                    GameLogic.CheckAllDiagonalLinesWin(reel, ref money);
                 }
                 if (wager == MachineConstants.ALL_MODE)
                 {
