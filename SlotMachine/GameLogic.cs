@@ -16,7 +16,6 @@ public class GameLogic
     }
     public static void CheckHorizontalCenterWin(int[,] reel, ref int money)
     {
-        UIMethods.DisplayHorizontalCenterCheck();
         bool win = true;
         int middleRow = reel.GetLength(0) / 2;
         int first = reel[middleRow, 0];
@@ -40,7 +39,6 @@ public class GameLogic
             money -= MachineConstants.MIDDLE_LINE_PAYOUT;
         }
     }
-
     public static void CheckVerticalCenterWin(int[,] reel, ref int money)
     {
         UIMethods.DisplayVerticalCenterCheck();
@@ -68,7 +66,6 @@ public class GameLogic
     }
     public static void CheckAllHorizontalLinesWin(int[,] reel, ref int money)
     {
-        UIMethods.DisplayAllHorizontalLineCheck();
         bool anyWins = false;
         for (int row = 0; row < MachineConstants.REEL_SIZE; row++)
         {
@@ -101,7 +98,6 @@ public class GameLogic
     }
     public static void CheckAllVerticalLinesWin(int[,] reel, ref int money)
     {
-        UIMethods.DisplayAllVerticalLineCheck();
         bool anyWins = false;
         for (int col = 0; col < MachineConstants.REEL_SIZE; col++)
         {
@@ -123,7 +119,7 @@ public class GameLogic
         }
         if (anyWins)
         {
-            UIMethods.DisplayAllVerticalLinePayout();
+            UIMethods.DisplayAllVerticalLinesPayout();
             money += MachineConstants.VERTICAL_PAYOUT;
         }
         else
@@ -132,10 +128,8 @@ public class GameLogic
             money -= MachineConstants.VERTICAL_PAYOUT;
         }
     }
-
     public static void CheckAllDiagonalLinesWin(int[,] reel, ref int money)
     {
-        UIMethods.DisplayDiagonalLineCheck();
         int size = reel.GetLength(0);
         // checking diagonal left-to-right (\)
         bool winLeft = true;
@@ -171,4 +165,5 @@ public class GameLogic
             money -= MachineConstants.DIAGONAL_PAYOUT;
         }
     }
+    
 }

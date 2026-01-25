@@ -52,13 +52,12 @@ public class UIMethods
         }
         Console.WriteLine();
     }
-  
     // to check if the user input is valid and in the correct number range.
     public static int GetValidInput()
     {
         while (true)
         {
-            string input = Console.ReadLine();
+            string? input = Console.ReadLine();
             if (!int.TryParse(input, out int wager))
             {
                 Console.WriteLine(
@@ -81,57 +80,47 @@ public class UIMethods
         Console.WriteLine($"Your new balance is: ${money}\n");
         return money;
     }
-
     public static void DisplayHorizontalCenterCheck()
     {
         Console.WriteLine("Check the horizontal center line...");
         System.Threading.Thread.Sleep(300);
     }
-
-    public static void DisplayAllHorizontalLineCheck()
+    public static void DisplayAllHorizontalLinesCheck()
     {
         Console.WriteLine("Check the all horizontal line check...");
         System.Threading.Thread.Sleep(300);
     }
-
     public static void DisplayVerticalCenterCheck()
     {
         Console.WriteLine("Check the vertical center line...");
         System.Threading.Thread.Sleep(300);
     }
-
-    public static void DisplayAllVerticalLineCheck()
+    public static void DisplayAllVerticalLinesCheck()
     {
         Console.WriteLine("Check the all vertical lines...");
         System.Threading.Thread.Sleep(300);
     }
-
-    public static void DisplayDiagonalLineCheck()
+    public static void DisplayDiagonalLinesCheck()
     {
         Console.WriteLine("Check the diagonal lines...");
         System.Threading.Thread.Sleep(300);
     }
-
     public static void DisplayHorizontalPayout()
     {
         Console.WriteLine($"You won ${MachineConstants.HORIZONTAL_PAYOUT} dollars!");
     }
-
     public static void DisplayVerticalPayout()
     {
         Console.WriteLine($"You won ${MachineConstants.VERTICAL_PAYOUT} dollars!");
     }
-
-    public static void DisplayAllVerticalLinePayout()
+    public static void DisplayAllVerticalLinesPayout()
     {
         Console.WriteLine($"You won ${MachineConstants.VERTICAL_PAYOUT} dollars!");
     }
-
     public static void DisplayDiagonalPayout()
     {
         Console.WriteLine($"Your won ${MachineConstants.DIAGONAL_PAYOUT} dollars!");   
     }
-
     public static void DisplayRoundLoss()
     {
         Console.WriteLine("You Lost this round. Try again.");

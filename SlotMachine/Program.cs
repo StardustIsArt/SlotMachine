@@ -24,23 +24,28 @@
                 Console.WriteLine();
                 UIMethods.PrintReel(reel);
                 if (wager == MachineConstants.CENTER_HORIZONTAL_MODE)   // checking the center horizontal line dynamically
-                {
+                { 
+                    UIMethods.DisplayHorizontalCenterCheck();
                    GameLogic.CheckHorizontalCenterWin(reel, ref money);
                 }
                 if (wager == MachineConstants.CENTER_VERTICAL_MODE)  // checking the center vertical line dynamically
                 {
+                    UIMethods.DisplayVerticalCenterCheck();
                     GameLogic.CheckVerticalCenterWin(reel, ref money);
                 }
                 if (wager == MachineConstants.ALL_HORIZONTAL_MODE)  // checking all horizontal lines dynamically
                 {
+                    UIMethods.DisplayAllHorizontalLinesCheck();
                     GameLogic.CheckAllHorizontalLinesWin(reel, ref money);
                 }
                 if (wager == MachineConstants.ALL_VERTICAL_MODE) // checking all vertical lines dynamically
                 {
+                    UIMethods.DisplayAllVerticalLinesCheck();
                     GameLogic.CheckAllVerticalLinesWin(reel, ref money);
                 }
                 if (wager == MachineConstants.DIAGONAL_MODE)
                 {
+                    UIMethods.DisplayDiagonalLinesCheck();
                     GameLogic.CheckAllDiagonalLinesWin(reel, ref money);
                 }
                 if (wager == MachineConstants.ALL_MODE)
