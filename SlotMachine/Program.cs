@@ -10,7 +10,7 @@
         {
             UIMethods.PrintWelcomeMessage();
             int money = MachineConstants.MONEY_START_OF_GAME;
-            UIMethods.PrintStartingMoney();
+            UIMethods.PrintStartingMoney(money);
             UIMethods.PrintBettingOptions();
             Random number = new Random();   
             while (money > 0)
