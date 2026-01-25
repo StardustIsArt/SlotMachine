@@ -19,34 +19,14 @@
                 UIMethods.AskWagerChoice();
                 int wager = UIMethods.GetValidInput();
                 UIMethods.PrintWagerBet(wager);
-                //  setting up the grid for reel reading and random number in each slot.
+                // setting up the grid for reel reading and random number in each slot.
                 int[,] reel = GameLogic.GenerateReel(number);
                 Console.WriteLine();
                 UIMethods.PrintReel(reel);
-                if (wager == MachineConstants.CENTER_HORIZONTAL_MODE)   // checking the center horizontal line dynamically
+                // checking the center horizontal line dynamically
+                if (wager == MachineConstants.CENTER_HORIZONTAL_MODE)   
                 {
-                    Console.WriteLine("Checking the horizontal center line...");
-                    bool win = true;
-                    int middleRow = reel.GetLength(0) / 2;
-                    int first = reel[middleRow, 0];
-                    for (int j = 0; j < reel.GetLength(1); j++)
-                    {
-                        if (reel[MachineConstants.MIDDLE_LINE, j] != first)
-                        {
-                            win = false;
-                            break;
-                        }
-                    }
-                    if (win)
-                    {
-                        Console.WriteLine("You won $3 dollars!");
-                        money += MachineConstants.MIDDLE_LINE_PAYOUT;
-                    }
-                    else
-                    {
-                        Console.WriteLine("You lost this round. Try again!");
-                        money -= MachineConstants.MIDDLE_LINE_PAYOUT;
-                    }
+                   GameLogic.CheckHorizontalCenterWin(reel, ref money);
                 }
                 if (wager == MachineConstants.CENTER_VERTICAL_MODE)  // checking the center vertical line dynamically
                 {

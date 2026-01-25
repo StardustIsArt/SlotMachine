@@ -80,5 +80,20 @@ public class UIMethods
         Console.WriteLine($"Your new balance is: ${money}\n");
         return money;
     }
+
+    public static void DisplayHorizontalCenter()
+    {
+        Console.WriteLine("Check the horizontal center line...");
+    }
+
+    public static void DisplayHorizontalPayout()
+    {
+        Console.WriteLine($"You won ${MachineConstants.HORIZONTAL_PAYOUT} dollars!");
+    }
+
+    public static void DisplayRoundLoss()
+    {
+        Console.WriteLine("You Lost this round. Try again.");
+    }
 }
     
