@@ -14,10 +14,9 @@ public class GameLogic
         }
         return reel;
     }
-
     public static void CheckHorizontalCenterWin(int[,] reel, ref int money)
     {
-        UIMethods.DisplayHorizontalCenter();
+        UIMethods.DisplayHorizontalCenterCheck();
         bool win = true;
         int middleRow = reel.GetLength(0) / 2;
         int first = reel[middleRow, 0];
@@ -29,6 +28,7 @@ public class GameLogic
                 break;
             }
         }
+
         if (win)
         {
             UIMethods.DisplayHorizontalPayout();
@@ -39,6 +39,31 @@ public class GameLogic
             UIMethods.DisplayRoundLoss();
             money -= MachineConstants.MIDDLE_LINE_PAYOUT;
         }
-        
+    }
+
+    public static void CheckVerticalCenterWin(int[,] reel, ref int money)
+    {
+        UIMethods.DisplayVerticalCenterCheck();
+        bool win = true;
+        int middleRow = reel.GetLength(0) / 2;
+        int first = reel[0, middleRow];
+        for (int j = 0; j < reel.GetLength(0); j++)
+        {
+            if (reel[j, MachineConstants.MIDDLE_LINE] != first)
+            {
+                win = false;
+                break;
+            }
+        }
+        if (win)
+        {
+            Console.WriteLine("You won $3 dollars!");
+            money += MachineConstants.MIDDLE_LINE_PAYOUT;
+        }
+        else
+        {
+            Console.WriteLine("You lost this round. Try again!");
+            money -= MachineConstants.MIDDLE_LINE_PAYOUT;
+        }
     }
 }

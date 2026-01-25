@@ -81,9 +81,16 @@ public class UIMethods
         return money;
     }
 
-    public static void DisplayHorizontalCenter()
+    public static void DisplayHorizontalCenterCheck()
     {
         Console.WriteLine("Check the horizontal center line...");
+        System.Threading.Thread.Sleep(300)
+    }
+
+    public static void DisplayVerticalCenterCheck()
+    {
+        Console.WriteLine("Check the vertical center line...");
+        System.Threading.Thread.Sleep(300)
     }
 
     public static void DisplayHorizontalPayout()

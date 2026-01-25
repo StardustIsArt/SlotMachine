@@ -23,35 +23,13 @@
                 int[,] reel = GameLogic.GenerateReel(number);
                 Console.WriteLine();
                 UIMethods.PrintReel(reel);
-                // checking the center horizontal line dynamically
-                if (wager == MachineConstants.CENTER_HORIZONTAL_MODE)   
+                if (wager == MachineConstants.CENTER_HORIZONTAL_MODE)   // checking the center horizontal line dynamically
                 {
                    GameLogic.CheckHorizontalCenterWin(reel, ref money);
                 }
                 if (wager == MachineConstants.CENTER_VERTICAL_MODE)  // checking the center vertical line dynamically
                 {
-                    Console.WriteLine("Checking the vertical center line...");
-                    bool win = true;
-                    int middleRow = reel.GetLength(0) / 2;
-                    int first = reel[0, middleRow];
-                    for (int j = 0; j < reel.GetLength(0); j++)
-                    {
-                        if (reel[j, MachineConstants.MIDDLE_LINE] != first)
-                        {
-                            win = false;
-                            break;
-                        }
-                    }
-                    if (win)
-                    {
-                        Console.WriteLine("You won $3 dollars!");
-                        money += MachineConstants.MIDDLE_LINE_PAYOUT;
-                    }
-                    else
-                    {
-                        Console.WriteLine("You lost this round. Try again!");
-                        money -= MachineConstants.MIDDLE_LINE_PAYOUT;
-                    }
+                    GameLogic.CheckVerticalCenterWin(reel, ref money);
                 }
                 if (wager == MachineConstants.ALL_HORIZONTAL_MODE)  // checking all horizontal lines dynamically
                 {
