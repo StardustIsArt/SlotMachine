@@ -26,7 +26,7 @@
                 if (wager == MachineConstants.CENTER_HORIZONTAL_MODE)   // checking the center horizontal line dynamically
                 { 
                     UIMethods.DisplayHorizontalCenterCheck();
-                   GameLogic.CheckHorizontalCenterWin(reel, ref money);
+                    GameLogic.CheckHorizontalCenterWin(reel, ref money);
                 }
                 if (wager == MachineConstants.CENTER_VERTICAL_MODE)  // checking the center vertical line dynamically
                 {

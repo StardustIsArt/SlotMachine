@@ -14,7 +14,7 @@ public class GameLogic
         }
         return reel;
     }
-    public static void CheckHorizontalCenterWin(int[,] reel, ref int money)
+    public static bool CheckHorizontalCenterWin(int[,] reel, ref int money)
     {
         bool win = true;
         int middleRow = reel.GetLength(0) / 2;
@@ -38,8 +38,9 @@ public class GameLogic
             UIMethods.DisplayRoundLoss();
             money -= MachineConstants.MIDDLE_LINE_PAYOUT;
         }
+        return win;
     }
-    public static void CheckVerticalCenterWin(int[,] reel, ref int money)
+    public static bool CheckVerticalCenterWin(int[,] reel, ref int money)
     {
         UIMethods.DisplayVerticalCenterCheck();
         bool win = true;
@@ -63,8 +64,9 @@ public class GameLogic
             UIMethods.DisplayRoundLoss();
             money -= MachineConstants.MIDDLE_LINE_PAYOUT;
         }
+        return win;
     }
-    public static void CheckAllHorizontalLinesWin(int[,] reel, ref int money)
+    public static bool CheckAllHorizontalLinesWin(int[,] reel, ref int money)
     {
         bool anyWins = false;
         for (int row = 0; row < MachineConstants.REEL_SIZE; row++)
@@ -95,8 +97,9 @@ public class GameLogic
             UIMethods.DisplayRoundLoss();
             money -= MachineConstants.HORIZONTAL_PAYOUT;
         }
+        return anyWins;
     }
-    public static void CheckAllVerticalLinesWin(int[,] reel, ref int money)
+    public static bool CheckAllVerticalLinesWin(int[,] reel, ref int money)
     {
         bool anyWins = false;
         for (int col = 0; col < MachineConstants.REEL_SIZE; col++)
@@ -127,8 +130,9 @@ public class GameLogic
             UIMethods.DisplayRoundLoss();
             money -= MachineConstants.VERTICAL_PAYOUT;
         }
+        return anyWins;
     }
-    public static void CheckAllDiagonalLinesWin(int[,] reel, ref int money)
+    public static bool CheckAllDiagonalLinesWin(int[,] reel, ref int money)
     {
         int size = reel.GetLength(0);
         // checking diagonal left-to-right (\)
@@ -164,6 +168,6 @@ public class GameLogic
             UIMethods.DisplayRoundLoss();
             money -= MachineConstants.DIAGONAL_PAYOUT;
         }
+        return winLeft && winRight;
     }
-    
 }
