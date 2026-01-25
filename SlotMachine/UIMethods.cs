@@ -84,13 +84,13 @@ public class UIMethods
     public static void DisplayHorizontalCenterCheck()
     {
         Console.WriteLine("Check the horizontal center line...");
-        System.Threading.Thread.Sleep(300)
+        System.Threading.Thread.Sleep(300);
     }
 
     public static void DisplayVerticalCenterCheck()
     {
         Console.WriteLine("Check the vertical center line...");
-        System.Threading.Thread.Sleep(300)
+        System.Threading.Thread.Sleep(300);
     }
 
     public static void DisplayHorizontalPayout()
