@@ -33,7 +33,7 @@
                 }
                 if (wager == MachineConstants.ALL_HORIZONTAL_MODE)  // checking all horizontal lines dynamically
                 {
-                    Console.WriteLine("Checking all the horizontal lines...");
+                    UIMethods.DisplayAllHorizontalLineCheck();
                     bool anyWins = false;
                     for (int row = 0; row < MachineConstants.REEL_SIZE; row++)
                     {
@@ -55,7 +55,7 @@
                     }
                     if (anyWins)
                     {
-                        Console.WriteLine("Your won $9 dollars!");
+                        UIMethods.DisplayHorizontalPayout();
                         money += MachineConstants.HORIZONTAL_PAYOUT;
                     }
                     else
@@ -66,7 +66,7 @@
                 }
                 if (wager == MachineConstants.ALL_VERTICAL_MODE) // checking all vertical lines dynamically
                 {
-                    Console.WriteLine("Checking all the vertical lines...");
+                    UIMethods.DisplayAllVerticalLineCheck();
                     bool anyWins = false;
                     for (int col = 0; col < MachineConstants.REEL_SIZE; col++)
                     {
@@ -88,7 +88,7 @@
                     }
                     if (anyWins)
                     {
-                        Console.WriteLine("Your won $20 dollars!");
+                        UIMethods.DisplayAllVerticalLinePayout();
                         money += MachineConstants.VERTICAL_PAYOUT;
                     }
                     else
@@ -99,7 +99,7 @@
                 }
                 if (wager == MachineConstants.DIAGONAL_MODE)
                 {
-                    Console.WriteLine("Checking the diagonal lines...");
+                    UIMethods.DisplayDiagonalLineCheck();
                     int size = reel.GetLength(0);
                     // checking diagonal left-to-right (\)
                     bool winLeft = true;
@@ -131,7 +131,7 @@
                     }
                     else
                     {
-                        Console.WriteLine("You lost this round. Try another bet!");
+                        UIMethods.DisplayRoundLoss();
                         money -= MachineConstants.DIAGONAL_PAYOUT;
                     }
                 }

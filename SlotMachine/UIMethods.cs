@@ -87,9 +87,27 @@ public class UIMethods
         System.Threading.Thread.Sleep(300);
     }
 
+    public static void DisplayAllHorizontalLineCheck()
+    {
+        Console.WriteLine("Check the all horizontal line check...");
+        System.Threading.Thread.Sleep(300);
+    }
+
     public static void DisplayVerticalCenterCheck()
     {
         Console.WriteLine("Check the vertical center line...");
+        System.Threading.Thread.Sleep(300);
+    }
+
+    public static void DisplayAllVerticalLineCheck()
+    {
+        Console.WriteLine("Check the all vertical lines...");
+        System.Threading.Thread.Sleep(300);
+    }
+
+    public static void DisplayDiagonalLineCheck()
+    {
+        Console.WriteLine("Check the diagonal lines...");
         System.Threading.Thread.Sleep(300);
     }
 
@@ -99,6 +117,11 @@ public class UIMethods
     }
 
     public static void DisplayVerticalPayout()
+    {
+        Console.WriteLine($"You won ${MachineConstants.VERTICAL_PAYOUT} dollars!");
+    }
+
+    public static void DisplayAllVerticalLinePayout()
     {
         Console.WriteLine($"You won ${MachineConstants.VERTICAL_PAYOUT} dollars!");
     }
