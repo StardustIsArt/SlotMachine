@@ -43,13 +43,19 @@
                     UIMethods.DisplayAllVerticalLinesCheck();
                     GameLogic.CheckAllVerticalLinesWin(reel, ref money);
                 }
-                if (wager == MachineConstants.DIAGONAL_MODE)
+                if (wager == MachineConstants.DIAGONAL_MODE) // checking diagonal lines dynamically
                 {
                     UIMethods.DisplayDiagonalLinesCheck();
                     GameLogic.CheckAllDiagonalLinesWin(reel, ref money);
                 }
-                if (wager == MachineConstants.ALL_MODE)
+                if (wager == MachineConstants.ALL_MODE)  // checking all lines dynamically
                 {
+                    if (GameLogic.CheckAllHorizontalLinesWin(reel, ref money) &&
+                        GameLogic.CheckAllVerticalLinesWin(reel, ref money) &&
+                        GameLogic.CheckAllDiagonalLinesWin(reel, ref money))
+                    {
+                        UIMethods.DisplayAllLinesPayout();
+                    }
                     UIMethods.DisplayRoundLoss();
                 }
                 UIMethods.PrintCurrentBalance(money);

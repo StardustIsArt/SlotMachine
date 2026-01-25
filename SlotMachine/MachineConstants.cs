@@ -25,6 +25,7 @@ public class MachineConstants
     public const int HORIZONTAL_PAYOUT = 9;
     public const int VERTICAL_PAYOUT = 20;
     public const int DIAGONAL_PAYOUT = 12;
+    public const int ALL_PAYOUT = 30;
     
     public const int MIDDLE_LINE = REEL_SIZE / 2;
 

@@ -121,6 +121,10 @@ public class UIMethods
     {
         Console.WriteLine($"Your won ${MachineConstants.DIAGONAL_PAYOUT} dollars!");   
     }
+    public static void DisplayAllLinesPayout()
+    {
+        Console.WriteLine($"You won ${MachineConstants.ALL_PAYOUT} dollars!");
+    }
     public static void DisplayRoundLoss()
     {
         Console.WriteLine("You Lost this round. Try again.");
