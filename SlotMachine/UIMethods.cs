@@ -98,6 +98,11 @@ public class UIMethods
         Console.WriteLine($"You won ${MachineConstants.HORIZONTAL_PAYOUT} dollars!");
     }
 
+    public static void DisplayVerticalPayout()
+    {
+        Console.WriteLine($"You won ${MachineConstants.VERTICAL_PAYOUT} dollars!");
+    }
+
     public static void DisplayRoundLoss()
     {
         Console.WriteLine("You Lost this round. Try again.");

@@ -57,12 +57,12 @@ public class GameLogic
         }
         if (win)
         {
-            Console.WriteLine("You won $3 dollars!");
+            UIMethods.DisplayVerticalPayout();
             money += MachineConstants.MIDDLE_LINE_PAYOUT;
         }
         else
         {
-            Console.WriteLine("You lost this round. Try again!");
+            UIMethods.DisplayRoundLoss();
             money -= MachineConstants.MIDDLE_LINE_PAYOUT;
         }
     }
