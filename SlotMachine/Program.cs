@@ -33,69 +33,11 @@
                 }
                 if (wager == MachineConstants.ALL_HORIZONTAL_MODE)  // checking all horizontal lines dynamically
                 {
-                    UIMethods.DisplayAllHorizontalLineCheck();
-                    bool anyWins = false;
-                    for (int row = 0; row < MachineConstants.REEL_SIZE; row++)
-                    {
-                        int first = reel[row, 0];
-                        bool lineWin = true;
-                        for (int col = 0; col < reel.GetLength(0); col++)
-                        {
-                            if (reel[row, col] != first)
-                            {
-                                lineWin = false;
-                                break;
-                            }
-                        }
-                        if (lineWin)
-                        {
-                            anyWins = true;
-                            Console.WriteLine($"Line {row + 1} is a winner!");
-                        }
-                    }
-                    if (anyWins)
-                    {
-                        UIMethods.DisplayHorizontalPayout();
-                        money += MachineConstants.HORIZONTAL_PAYOUT;
-                    }
-                    else
-                    {
-                        Console.WriteLine("You didn't win any lines this round. Try another bet!");
-                        money -= MachineConstants.HORIZONTAL_PAYOUT;
-                    }
+                    GameLogic.CheckAllHorizontalLinesWin(reel, ref money);
                 }
                 if (wager == MachineConstants.ALL_VERTICAL_MODE) // checking all vertical lines dynamically
                 {
-                    UIMethods.DisplayAllVerticalLineCheck();
-                    bool anyWins = false;
-                    for (int col = 0; col < MachineConstants.REEL_SIZE; col++)
-                    {
-                        int first = reel[0, col];
-                        bool lineWin = true;
-                        for (int row = 0; row < reel.GetLength(0); row++)
-                        {
-                            if (reel[row, col] != first)
-                            {
-                                lineWin = false;
-                                break;
-                            }
-                        }
-                        if (lineWin)
-                        {
-                            anyWins = true;
-                            Console.WriteLine($"Line {col + 1} is a winner!");
-                        }
-                    }
-                    if (anyWins)
-                    {
-                        UIMethods.DisplayAllVerticalLinePayout();
-                        money += MachineConstants.VERTICAL_PAYOUT;
-                    }
-                    else
-                    {
-                        Console.WriteLine("You didn't win any lines this round. Try another bet!");
-                        money -= MachineConstants.VERTICAL_PAYOUT;
-                    }
+                    GameLogic.CheckAllVerticalLinesWin(reel, ref money);
                 }
                 if (wager == MachineConstants.DIAGONAL_MODE)
                 {
@@ -137,7 +79,7 @@
                 }
                 if (wager == MachineConstants.ALL_MODE)
                 {
-                    Console.WriteLine("You didn't win any lines this round. Try another bet!");
+                    UIMethods.DisplayRoundLoss();
                 }
                 UIMethods.PrintCurrentBalance(money);
             }

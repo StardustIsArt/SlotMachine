@@ -66,4 +66,70 @@ public class GameLogic
             money -= MachineConstants.MIDDLE_LINE_PAYOUT;
         }
     }
+    public static void CheckAllHorizontalLinesWin(int[,] reel, ref int money)
+    {
+        UIMethods.DisplayAllHorizontalLineCheck();
+        bool anyWins = false;
+        for (int row = 0; row < MachineConstants.REEL_SIZE; row++)
+        {
+            int first = reel[row, 0];
+            bool lineWin = true;
+            for (int col = 0; col < reel.GetLength(0); col++)
+            {
+                if (reel[row, col] != first)
+                {
+                    lineWin = false;
+                    break;
+                }
+            }
+            if (lineWin)
+            {
+                anyWins = true;
+                Console.WriteLine($"Line {row + 1} is a winner!");
+            }
+        }
+        if (anyWins)
+        {
+            UIMethods.DisplayHorizontalPayout();
+            money += MachineConstants.HORIZONTAL_PAYOUT;
+        }
+        else
+        {
+            UIMethods.DisplayRoundLoss();
+            money -= MachineConstants.HORIZONTAL_PAYOUT;
+        }
+    }
+    public static void CheckAllVerticalLinesWin(int[,] reel, ref int money)
+    {
+        UIMethods.DisplayAllVerticalLineCheck();
+        bool anyWins = false;
+        for (int col = 0; col < MachineConstants.REEL_SIZE; col++)
+        {
+            int first = reel[0, col];
+            bool lineWin = true;
+            for (int row = 0; row < reel.GetLength(0); row++)
+            {
+                if (reel[row, col] != first)
+                {
+                    lineWin = false;
+                    break;
+                }
+            }
+            if (lineWin)
+            {
+                anyWins = true;
+                Console.WriteLine($"Line {col + 1} is a winner!");
+            }
+        }
+        if (anyWins)
+        {
+            UIMethods.DisplayAllVerticalLinePayout();
+            money += MachineConstants.VERTICAL_PAYOUT;
+        }
+        else
+        {
+            UIMethods.DisplayRoundLoss();
+            money -= MachineConstants.VERTICAL_PAYOUT;
+        }
+    }
 }
