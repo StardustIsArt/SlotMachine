@@ -14,6 +14,20 @@ public class GameLogic
         }
         return reel;
     }
+
+    public static void HandlePayout(bool win, int payout, Action winMessage, ref int money)
+    {
+        if (win)
+        {
+            winMessage();
+            money += payout;
+        }
+        else
+        {
+            UIMethods.DisplayRoundLoss();
+            money -= payout;
+        }
+    }
     public static bool CheckHorizontalCenterWin(int[,] reel, ref int money)
     {
         bool win = true;
@@ -28,16 +42,7 @@ public class GameLogic
             }
         }
 
-        if (win)
-        {
-            UIMethods.DisplayHorizontalPayout();
-            money += MachineConstants.MIDDLE_LINE_PAYOUT;
-        }
-        else
-        {
-            UIMethods.DisplayRoundLoss();
-            money -= MachineConstants.MIDDLE_LINE_PAYOUT;
-        }
+        HandlePayout(win, MachineConstants.MIDDLE_LINE_PAYOUT, UIMethods.DisplayHorizontalPayout, ref money);
         return win;
     }
     public static bool CheckVerticalCenterWin(int[,] reel, ref int money)
@@ -54,16 +59,7 @@ public class GameLogic
                 break;
             }
         }
-        if (win)
-        {
-            UIMethods.DisplayVerticalPayout();
-            money += MachineConstants.MIDDLE_LINE_PAYOUT;
-        }
-        else
-        {
-            UIMethods.DisplayRoundLoss();
-            money -= MachineConstants.MIDDLE_LINE_PAYOUT;
-        }
+        HandlePayout(win, MachineConstants.MIDDLE_LINE_PAYOUT, UIMethods.DisplayVerticalPayout, ref money);
         return win;
     }
     public static bool CheckAllHorizontalLinesWin(int[,] reel, ref int money)
@@ -87,16 +83,7 @@ public class GameLogic
                 Console.WriteLine($"Line {row + 1} is a winner!");
             }
         }
-        if (anyWins)
-        {
-            UIMethods.DisplayHorizontalPayout();
-            money += MachineConstants.HORIZONTAL_PAYOUT;
-        }
-        else
-        {
-            UIMethods.DisplayRoundLoss();
-            money -= MachineConstants.HORIZONTAL_PAYOUT;
-        }
+        HandlePayout(anyWins, MachineConstants.VERTICAL_N_HORIZONTAL_ALL_PAYOUT, UIMethods.DisplayAllHorizontalLinesPayout, ref money);
         return anyWins;
     }
     public static bool CheckAllVerticalLinesWin(int[,] reel, ref int money)
@@ -120,15 +107,16 @@ public class GameLogic
                 Console.WriteLine($"Line {col + 1} is a winner!");
             }
         }
+        HandlePayout(anyWins, MachineConstants.VERTICAL_N_HORIZONTAL_ALL_PAYOUT, UIMethods.DisplayAllVerticalLinesPayout, ref money);
         if (anyWins)
         {
             UIMethods.DisplayAllVerticalLinesPayout();
-            money += MachineConstants.VERTICAL_PAYOUT;
+            money += MachineConstants.VERTICAL_N_HORIZONTAL_ALL_PAYOUT;
         }
         else
         {
             UIMethods.DisplayRoundLoss();
-            money -= MachineConstants.VERTICAL_PAYOUT;
+            money -= MachineConstants.VERTICAL_N_HORIZONTAL_ALL_PAYOUT;
         }
         return anyWins;
     }
@@ -158,16 +146,7 @@ public class GameLogic
                 break;
             }
         }
-        if (winLeft || winRight)
-        {
-            UIMethods.DisplayDiagonalPayout();
-            money += MachineConstants.DIAGONAL_PAYOUT;
-        }
-        else
-        {
-            UIMethods.DisplayRoundLoss();
-            money -= MachineConstants.DIAGONAL_PAYOUT;
-        }
-        return winLeft && winRight;
+        HandlePayout(winLeft || winRight, MachineConstants.DIAGONAL_PAYOUT, UIMethods.DisplayDiagonalPayout, ref money);
+        return winLeft || winRight;
     }
 }

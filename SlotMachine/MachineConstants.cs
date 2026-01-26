@@ -23,7 +23,7 @@ public class MachineConstants
     // Betting payouts
     public const int MIDDLE_LINE_PAYOUT = 3;
     public const int HORIZONTAL_PAYOUT = 9;
-    public const int VERTICAL_PAYOUT = 20;
+    public const int VERTICAL_N_HORIZONTAL_ALL_PAYOUT = 20;
     public const int DIAGONAL_PAYOUT = 12;
     public const int ALL_PAYOUT = 30;
     

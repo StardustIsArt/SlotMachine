@@ -111,11 +111,15 @@ public class UIMethods
     }
     public static void DisplayVerticalPayout()
     {
-        Console.WriteLine($"You won ${MachineConstants.VERTICAL_PAYOUT} dollars!");
+        Console.WriteLine($"You won ${MachineConstants.VERTICAL_N_HORIZONTAL_ALL_PAYOUT} dollars!");
+    }
+    public static void DisplayAllHorizontalLinesPayout()
+    {
+        Console.WriteLine($"You won ${MachineConstants.VERTICAL_N_HORIZONTAL_ALL_PAYOUT} dollars!");
     }
     public static void DisplayAllVerticalLinesPayout()
     {
-        Console.WriteLine($"You won ${MachineConstants.VERTICAL_PAYOUT} dollars!");
+        Console.WriteLine($"You won ${MachineConstants.VERTICAL_N_HORIZONTAL_ALL_PAYOUT} dollars!");
     }
     public static void DisplayDiagonalPayout()
     {
