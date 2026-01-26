@@ -15,7 +15,7 @@ public class GameLogic
         return reel;
     }
 
-    public static void HandlePayout(bool win, int payout, Action winMessage, ref int money)
+    private static void HandlePayout(bool win, int payout, Action winMessage, ref int money)
     {
         if (win)
         {
