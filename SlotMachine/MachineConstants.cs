@@ -3,12 +3,9 @@ namespace SlotMachine;
 public class MachineConstants
 {
     public const int MONEY_START_OF_GAME = 30;
-    
     public const int REEL_SIZE = 3;
-    
     public const int MIN_RANDOM = 0;
     public const int MAX_RANDOM = 100;
-    public const int ZERO = 0;
     
     // Betting modes
     public const int MIN_BET = 1;

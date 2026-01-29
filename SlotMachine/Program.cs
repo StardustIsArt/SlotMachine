@@ -12,7 +12,21 @@
             int money = MachineConstants.MONEY_START_OF_GAME;
             UIMethods.PrintStartingMoney(money);
             UIMethods.PrintBettingOptions();
-            Random number = new Random();   
+            Random number = new Random();
+
+            static void HandlePayout(bool win, int payout, Action winMessage, ref int money)
+            {
+                if (win)
+                {
+                    winMessage();
+                    money += payout;
+                }
+                else
+                {
+                    UIMethods.DisplayRoundLoss();
+                    money -= payout;
+                }
+            }
             while (money > 0)
             {
                 //UIMethods.PrintCurrentBalance(money);
@@ -23,36 +37,42 @@
                 int[,] reel = GameLogic.GenerateReel(number);
                 Console.WriteLine();
                 UIMethods.PrintReel(reel);
+                bool win = true;
                 if (wager == MachineConstants.CENTER_HORIZONTAL_MODE)   // checking the center horizontal line dynamically
                 { 
                     UIMethods.DisplayHorizontalCenterCheck();
-                    GameLogic.CheckHorizontalCenterWin(reel, ref money);
+                    win = GameLogic.IsHorizontalCenterWinner(reel);
+                    HandlePayout(win, MachineConstants.MIDDLE_LINE_PAYOUT, UIMethods.DisplayHorizontalPayout, ref money);
                 }
                 if (wager == MachineConstants.CENTER_VERTICAL_MODE)  // checking the center vertical line dynamically
                 {
                     UIMethods.DisplayVerticalCenterCheck();
-                    GameLogic.CheckVerticalCenterWin(reel, ref money);
+                    win = GameLogic.IsVerticalCenterWinner(reel);
+                    HandlePayout(win, MachineConstants.MIDDLE_LINE_PAYOUT, UIMethods.DisplayVerticalPayout, ref money);
                 }
                 if (wager == MachineConstants.ALL_HORIZONTAL_MODE)  // checking all horizontal lines dynamically
                 {
                     UIMethods.DisplayAllHorizontalLinesCheck();
-                    GameLogic.CheckAllHorizontalLinesWin(reel, ref money);
+                    win = GameLogic.IsAllHorizontalLinesWinners(reel);
+                    HandlePayout(win, MachineConstants.VERTICAL_N_HORIZONTAL_ALL_PAYOUT, UIMethods.DisplayAllHorizontalLinesPayout, ref money);
                 }
                 if (wager == MachineConstants.ALL_VERTICAL_MODE) // checking all vertical lines dynamically
                 {
                     UIMethods.DisplayAllVerticalLinesCheck();
-                    GameLogic.CheckAllVerticalLinesWin(reel, ref money);
+                    win = GameLogic.IsAllVerticalLinesWinners(reel);
+                    HandlePayout(win, MachineConstants.VERTICAL_N_HORIZONTAL_ALL_PAYOUT, UIMethods.DisplayAllHorizontalLinesPayout, ref money);
                 }
                 if (wager == MachineConstants.DIAGONAL_MODE) // checking diagonal lines dynamically
                 {
                     UIMethods.DisplayDiagonalLinesCheck();
-                    GameLogic.CheckAllDiagonalLinesWin(reel, ref money);
+                    bool diagonalWin = GameLogic.DoAnyDiagonalLinesWin(reel);
+                    HandlePayout(diagonalWin, MachineConstants.DIAGONAL_PAYOUT, UIMethods.DisplayDiagonalPayout, ref money);
                 }
                 if (wager == MachineConstants.ALL_MODE)  // checking all lines dynamically
                 {
-                    if (GameLogic.CheckAllHorizontalLinesWin(reel, ref money) &&
-                        GameLogic.CheckAllVerticalLinesWin(reel, ref money) &&
-                        GameLogic.CheckAllDiagonalLinesWin(reel, ref money))
+                    if (GameLogic.IsAllHorizontalLinesWinners(reel) &&
+                        GameLogic.IsAllVerticalLinesWinners(reel) &&
+                        GameLogic.DoAnyDiagonalLinesWin(reel))
                     {
                         UIMethods.DisplayAllLinesPayout();
                     }

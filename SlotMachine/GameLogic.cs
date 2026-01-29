@@ -1,5 +1,4 @@
 namespace SlotMachine;
-
 public class GameLogic
 {
     public static int[,] GenerateReel(Random random)
@@ -14,8 +13,7 @@ public class GameLogic
         }
         return reel;
     }
-
-    private static void HandlePayout(bool win, int payout, Action winMessage, ref int money)
+    public static void HandlePayout(bool win, int payout, Action winMessage, ref int money)
     {
         if (win)
         {
@@ -28,48 +26,39 @@ public class GameLogic
             money -= payout;
         }
     }
-    public static bool CheckHorizontalCenterWin(int[,] reel, ref int money)
+    public static bool IsHorizontalCenterWinner(int[,] reel)
     {
-        bool win = true;
         int middleRow = reel.GetLength(0) / 2;
         int first = reel[middleRow, 0];
         for (int j = 0; j < reel.GetLength(1); j++)
         {
             if (reel[middleRow, j] != first)
             {
-                win = false;
-                break;
+                return false;
             }
         }
-
-        HandlePayout(win, MachineConstants.MIDDLE_LINE_PAYOUT, UIMethods.DisplayHorizontalPayout, ref money);
-        return win;
+        return true;
     }
-    public static bool CheckVerticalCenterWin(int[,] reel, ref int money)
+    public static bool IsVerticalCenterWinner(int[,] reel)
     {
-        UIMethods.DisplayVerticalCenterCheck();
-        bool win = true;
         int middleRow = reel.GetLength(0) / 2;
         int first = reel[0, middleRow];
         for (int j = 0; j < reel.GetLength(0); j++)
         {
             if (reel[j, MachineConstants.MIDDLE_LINE] != first)
             {
-                win = false;
-                break;
+                return false;
             }
         }
-        HandlePayout(win, MachineConstants.MIDDLE_LINE_PAYOUT, UIMethods.DisplayVerticalPayout, ref money);
-        return win;
+        return true;
     }
-    public static bool CheckAllHorizontalLinesWin(int[,] reel, ref int money)
+    public static bool IsAllHorizontalLinesWinners(int[,] reel)
     {
-        bool anyWins = false;
         for (int row = 0; row < MachineConstants.REEL_SIZE; row++)
         {
             int first = reel[row, 0];
             bool lineWin = true;
-            for (int col = 0; col < reel.GetLength(0); col++)
+            for (int col = 1; col < reel.GetLength(1); col++)
             {
                 if (reel[row, col] != first)
                 {
@@ -79,16 +68,13 @@ public class GameLogic
             }
             if (lineWin)
             {
-                anyWins = true;
-                Console.WriteLine($"Line {row + 1} is a winner!");
+                return true;
             }
         }
-        HandlePayout(anyWins, MachineConstants.VERTICAL_N_HORIZONTAL_ALL_PAYOUT, UIMethods.DisplayAllHorizontalLinesPayout, ref money);
-        return anyWins;
+        return false;
     }
-    public static bool CheckAllVerticalLinesWin(int[,] reel, ref int money)
+    public static bool IsAllVerticalLinesWinners(int[,] reel)
     {
-        bool anyWins = false;
         for (int col = 0; col < MachineConstants.REEL_SIZE; col++)
         {
             int first = reel[0, col];
@@ -103,33 +89,21 @@ public class GameLogic
             }
             if (lineWin)
             {
-                anyWins = true;
-                Console.WriteLine($"Line {col + 1} is a winner!");
+                return true;
             }
         }
-        HandlePayout(anyWins, MachineConstants.VERTICAL_N_HORIZONTAL_ALL_PAYOUT, UIMethods.DisplayAllVerticalLinesPayout, ref money);
-        if (anyWins)
-        {
-            UIMethods.DisplayAllVerticalLinesPayout();
-            money += MachineConstants.VERTICAL_N_HORIZONTAL_ALL_PAYOUT;
-        }
-        else
-        {
-            UIMethods.DisplayRoundLoss();
-            money -= MachineConstants.VERTICAL_N_HORIZONTAL_ALL_PAYOUT;
-        }
-        return anyWins;
+        return false;
     }
-    public static bool CheckAllDiagonalLinesWin(int[,] reel, ref int money)
+    public static bool DoAnyDiagonalLinesWin(int[,] reel)
     {
         int size = reel.GetLength(0);
         // checking diagonal left-to-right (\)
         bool winLeft = true;
         int firstLeft = reel[0, 0];
                 
-        for (int j = 1; j < size; j++)
+        for (int i = 1; i < size; i++)
         {
-            if (reel[j, j] != firstLeft)
+            if (reel[i, i] != firstLeft)
             {
                 winLeft = false;
                 break;
@@ -146,7 +120,6 @@ public class GameLogic
                 break;
             }
         }
-        HandlePayout(winLeft || winRight, MachineConstants.DIAGONAL_PAYOUT, UIMethods.DisplayDiagonalPayout, ref money);
         return winLeft || winRight;
     }
 }
