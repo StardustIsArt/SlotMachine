@@ -13,20 +13,7 @@
             UIMethods.PrintStartingMoney(money);
             UIMethods.PrintBettingOptions();
             Random number = new Random();
-
-            static void HandlePayout(bool win, int payout, Action winMessage, ref int money)
-            {
-                if (win)
-                {
-                    winMessage();
-                    money += payout;
-                }
-                else
-                {
-                    UIMethods.DisplayRoundLoss();
-                    money -= payout;
-                }
-            }
+            
             while (money > 0)
             {
                 //UIMethods.PrintCurrentBalance(money);
@@ -79,6 +66,19 @@
                     UIMethods.DisplayRoundLoss();
                 }
                 UIMethods.PrintCurrentBalance(money);
+            }
+        }
+        static void HandlePayout(bool win, int payout, Action winMessage, ref int money)
+        {
+            if (win)
+            {
+                winMessage();
+                money += payout;
+            }
+            else
+            {
+                UIMethods.DisplayRoundLoss();
+                money -= payout;
             }
         }
     }
