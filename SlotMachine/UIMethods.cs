@@ -1,3 +1,5 @@
+using System.Reflection.PortableExecutable;
+
 namespace SlotMachine;
 
 public class UIMethods
@@ -26,7 +28,7 @@ public class UIMethods
     }
     public static void AskWagerChoice()
     {
-        Console.WriteLine("What is your choice in wager (1 - 6): ");
+        Console.WriteLine($"What is your choice in wager ({MachineConstants.MIN_BET} - {MachineConstants.MAX_BET}): ");
     }
     public static void PrintReel(int[,] reel)
     {
